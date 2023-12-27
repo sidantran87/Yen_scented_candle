@@ -1,31 +1,24 @@
 import React from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { decrement, increment } from "./redux/slides/counterSlice";
-import { Button } from 'antd';
-// import styles from "./Counter.module.css";
+import { BrowserRouter as Router, Routes, Route} from 'react-router-dom'
+import { routes } from './routes/index'
+import HeaderComponent from "./components/HeaderComponent/HeaderComponent";
 
-function Counter() {
-  const count = useSelector((state) => state.counter.value);
-  const dispatch = useDispatch();
+function App() {
 
   return (
     <div>
-      <div>
-        <Button type="default"
-          aria-label="Increment value"
-          onClick={() => dispatch(increment())}
-        >
-          Increment
-        </Button>
-        <span>{count}</span>
-        <Button type="default"
-          aria-label="Decrement value"
-          onClick={() => dispatch(decrement())}
-        >
-          Decrement
-        </Button>
-      </div>
+      <HeaderComponent/>
+      <Router>
+        <Routes>
+          {routes.map((route) => {
+            const Page = route.page 
+            return (
+              <Route path={route.path} element={<Page/>} />
+            )
+          })}
+        </Routes>
+      </Router>
     </div>
   );
 }
-export default Counter
+export default App
