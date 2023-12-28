@@ -3,7 +3,7 @@ import {Col, Button} from 'antd'
 import { WrapperHeader, LogoText, WrapperAccount, WrapperMenu, LogoTitle, Wrapperleft } from './style'
 import { ShoppingCartOutlined } from '@ant-design/icons';
 import SearchButton from '../SearchButtonComponent/SearchButton';
-import {gray,success} from '../color.js'
+import {gray,success} from '../../color.js'
 const HeaderComponent = () => {
    return (
       <div>

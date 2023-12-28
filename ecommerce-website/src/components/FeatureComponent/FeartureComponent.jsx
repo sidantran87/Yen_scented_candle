@@ -1,5 +1,5 @@
 import React from 'react'
-import {success} from '../color.js'
+import {success} from '../../color.js'
 const FeartureComponent = ({svg='', title, desc}) => {
   return (
       <div style={{display:'flex', justifyContent: 'center', alignItems: 'center', gap: '16px'}}>

@@ -1,6 +1,6 @@
 import React from "react";
 import { ProductHeader, ProductInfo, ProductInfoWrapper, ProductPrice, ProductRating, WrapperCard } from "./style";
-import {warning} from '../color.js'
+import {warning} from '../../color.js'
 // const { Meta } = Card;
 
 const ProductCard = () => {

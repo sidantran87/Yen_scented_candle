@@ -2,7 +2,7 @@ import React from 'react'
 import { SearchOutlined } from '@ant-design/icons'
 import InputComponent from '../InputComponent/InputComponent'
 import ButtonComponent from '../ButtonComponent/ButtonComponent'
-import {white, success} from '../color'
+import {white, success} from '../../color'
 const SearchButton = (props) => {
    const {size, placeholder, labelButton, backgroundButton=success, colorTextBtn= white, borderButton, borderSearch} = props
    return (
