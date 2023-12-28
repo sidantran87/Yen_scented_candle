@@ -3,12 +3,13 @@ import styled from 'styled-components'
 
 export const WrapperHeader = styled(Row)`
    width: 100vw;
-   padding: 24px 10px;
+   padding: 24px 60px;
    background: #fff;
    display: flex;
    align-items: center;
    justify-content: space-between;
    flex-wrap: nowrap;
+   box-shadow: 0px -1px 0px #E5E5E5 inset
 `
 
 export const LogoTitle = styled(Col)`
@@ -24,7 +25,8 @@ export const LogoTitle = styled(Col)`
 
 export const LogoText = styled.span`
    font-weight: bold;
-   font-size: 1.5rem ;
+   font-size: 32px;
+   font-weight: '500';
    color: #000;
    text-align: center
 `
@@ -41,17 +43,13 @@ export const WrapperAccount = styled.div`
 
 export const Wrapperleft = styled(Col)`
    display:flex;
-   /* justify-content: flex-end; */
-   /* justify-content: space-between; */
-   /* align-items: center; */
-
-   /* svg {
-      width:34px;
-      padding-left: 20px
-   } */
+   justify-content: flex-end;
+   gap: 40px;
+   align-items: center;
 `
 
 export const WrapperMenu = styled.nav`
+   padding: 16px 60px;
    display: flex;
    justify-content: flex-start;
    list-style-type: none;
