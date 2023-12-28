@@ -1,7 +1,7 @@
 import React from 'react'
 import {Col, Button} from 'antd'
 import { WrapperHeader, LogoText, WrapperAccount, WrapperMenu, LogoTitle, Wrapperleft } from './style'
-import Icon, { ShoppingCartOutlined } from '@ant-design/icons'
+import { ShoppingCartOutlined } from '@ant-design/icons'
 const HeaderComponent = () => {
    return (
       <div>
@@ -23,7 +23,7 @@ const HeaderComponent = () => {
                   <Button style={{background: '#00B207', fontFamily: 'Poppins'}} type='primary'>Login</Button>
                   <Button style={{fontFamily: 'Poppins'}} type='default'>Register</Button>
                </WrapperAccount>
-               <ShoppingCartOutlined style={{fontSize:'100px', color: 'red'}} />
+               <ShoppingCartOutlined style={{fontSize:'100px', color: 'black'}} />
             </Wrapperleft>
          </WrapperHeader>
       </div>

@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 export const WrapperHeader = styled(Row)`
    width: 100vw;
-   padding: 24px 60px;
+   padding: 24px 10px;
    background: #fff;
    display: flex;
    align-items: center;
