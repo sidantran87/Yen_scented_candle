@@ -23,6 +23,7 @@ export const gray = {
    200: '#CCCCCC',
    100: '#E6E6E6',
    50: '#F2F2F2',
+   bg: '#efefef'
 };
 
 export const white = '#FFF';

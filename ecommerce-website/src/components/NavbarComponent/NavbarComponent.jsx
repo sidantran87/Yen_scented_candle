@@ -36,7 +36,7 @@ const NavbarComponent = () => {
     }
   }
   return (
-    <div style={{padding:'24px 0', fontFamily: 'Poppins'}}>
+    <div style={{padding:'0', fontFamily: 'Poppins'}}>
       <div>
         <WrapperTitle>All Categories</WrapperTitle>
         <WrapperRow>
