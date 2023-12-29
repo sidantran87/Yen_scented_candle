@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { success } from '../../color'
+import { Input } from "antd";
 export const ProductDetailWrapper = styled.div`
    justify-content: flex-start;
    align-items: center;
@@ -74,5 +75,72 @@ export const DiscountTag = styled.div`
 `
 
 export const DescriptionWrapper = styled.div`
-   
+   padding: 16px 0
+`
+
+export const DescTitle = styled.div`
+   font-size: 20px;
+   font-family: 'Poppins';
+   font-weight: 600;
+
+`
+export const DescContent = styled.div`
+   font-size: 14;
+   font-family: 'Poppins';
+   font-weight: 400;
+   padding-top: 16px;
+   line-height: 26px
+`
+
+export const QuantityWrapper = styled.div`
+   padding: 8px;
+   /* margin: 0px; */
+   background: white;
+   border-radius: 170px;
+   border: 1px solid #E6E6E6;
+   justify-content: center;
+   align-items: center;
+   display: inline-flex;
+`
+
+export const QuanityButton = styled.div`
+   background: #F2F2F2;
+   width: 30px;
+   border-radius: 170px;
+   cursor: pointer;
+`
+
+export const QuanityInput = styled(Input)`
+   width: 40px;
+   font-family: 'Poppins', sans-serif;
+   text-align: center;
+`
+
+export const CTAWrapper = styled.div`
+   padding: 20px 0;
+   display: flex;
+   justify-content: space-between;
+   align-items: center
+`
+
+export const CTABtn = styled.div`
+   display: flex;
+   gap: 10px;
+   padding: 0 20px
+`
+
+export const BuyNowBtn = styled.div`
+   width: 300px;
+   height: 50px;
+`
+
+export const CartBtn = styled.div`
+   width: 300px;
+   height: 50px;
+`
+export const BoldText = styled.div`
+   color: #1A1A1A;
+   font-size: 14px;
+   font-family: 'Poppins', sans-serif;
+   font-weight: 500;
 `

@@ -1,9 +1,9 @@
 import React from 'react'
-import {Col, Button} from 'antd'
+import {Col, Button, Badge} from 'antd'
 import { WrapperHeader, LogoText, WrapperAccount, WrapperMenu, LogoTitle, Wrapperleft } from './style'
-import { ShoppingCartOutlined } from '@ant-design/icons';
 import SearchButton from '../SearchButtonComponent/SearchButton';
-import {gray,success} from '../../color.js'
+import {success} from '../../color.js'
+import {cartIcon} from '../../components/IconComponent/IconComponent.jsx'
 const HeaderComponent = () => {
    return (
       <div>
@@ -24,7 +24,9 @@ const HeaderComponent = () => {
                   <Button size='large' style={{fontFamily: 'Poppins'}} type='default'>Register</Button>
                </WrapperAccount>
                <div>
-                  <ShoppingCartOutlined style={{fontSize:'32px', color: gray[900]}} />
+                  <Badge count={5} color={success.dark} style={{fontFamily: 'Poppins'}}>
+                     <div style={{width:'26px'}}>{cartIcon}</div>
+                  </Badge>
                </div>
             </Wrapperleft>
             </Col>
