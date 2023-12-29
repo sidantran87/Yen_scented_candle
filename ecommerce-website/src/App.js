@@ -3,11 +3,13 @@ import { BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 
 import { routes } from './routes/index'
 import {DefaultComponent} from './components/DefautlComponent/DefaultComponent'
+// import ProductOperations from "./services/TestPage";
 
 function App() {
 
   return (
     <div>
+      {/* <ProductOperations></ProductOperations> */}
       <Router>
         <Routes>
           {routes.map((route) => {
@@ -23,6 +25,9 @@ function App() {
           })}
         </Routes>
       </Router>
+
+      
+
     </div>
   );
 }
