@@ -3,7 +3,7 @@ import {gray, success} from '../../color'
 export const WrapperTitle = styled.p`
    font-weight: 500;
    font-size: 20px;
-   padding: 20px 0 
+   padding-bottom: 24px
 `
 
 export const WrapperProductText = styled.div`
@@ -17,7 +17,8 @@ export const WrapperRow = styled.div`
    align-items: flex-start;
    flex-direction:column;
    gap: 20px;
-   font-family: Poppins, sans-serif
+   font-family: Poppins, sans-serif;
+   padding-bottom: 26px
 `
 
 export const WrapperPrice = styled.div`

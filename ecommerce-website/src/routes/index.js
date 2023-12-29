@@ -1,8 +1,11 @@
 import Homepage from "../pages/Homepage/Homepage";
 import NotFoundPage from "../pages/NotFoundPage/NotFoundPage";
 import OrderPage from "../pages/OderPage/OrderPage"
-import Product from "../pages/ProductPage/Product"
-
+import Products from "../pages/ProductPage/Products"
+import ProductDetailPage from "../pages/ProductDetailPage/ProductDetailPage"
+import TypeProductPage from "../pages/TypeProductPage/TypeProductPage";
+import SignInPage from "../pages/SignInPage/SignInPage"
+import SignUpPage from "../pages/SignUpPage/SignUpPage"
 export const routes = [
    {
       path: "/",
@@ -15,8 +18,28 @@ export const routes = [
       isShowHeader: true
    },
    {
-      path: "/product",
-      page: Product,
+      path: "/products",
+      page: Products,
+      isShowHeader: true
+   },
+   {
+      path: "/product-detail",
+      page: ProductDetailPage,
+      isShowHeader: true
+   },
+   {
+      path: "/sign-in",
+      page: SignInPage,
+      isShowHeader: true
+   },
+   {
+      path: "/sign-up",
+      page: SignUpPage,
+      isShowHeader: true
+   },
+   {
+      path: "/type",
+      page: TypeProductPage,
       isShowHeader: true
    },
    {

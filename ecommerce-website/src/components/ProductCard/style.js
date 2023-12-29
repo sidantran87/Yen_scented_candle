@@ -1,12 +1,18 @@
 import { Card } from "antd";
 import styled from "styled-components";
-import {success} from '../../color'
+import {gray, success} from '../../color'
+
 export const WrapperCard = styled(Card)`
 
+   border: 1px solid ${gray[200]};
+   
    & img {
       width: 246px;
       height: 246px;
       object-fit: cover;
+      border-top: 1px solid ${gray[200]};
+      border-left: 1px solid ${gray[200]};
+      border-right: 1px solid ${gray[200]};
    }
 
    &:hover {
