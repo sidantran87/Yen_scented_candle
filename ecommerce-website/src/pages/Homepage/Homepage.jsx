@@ -30,7 +30,7 @@ function Homepage() {
          <div style={{ height: 'fit-content' }}>
          </div>
          {/* Container */}
-         <div id='container' style={{ background: gray.bg, padding: '0 60px' }}>
+         <div id='container' style={{ background: white, padding: '0 60px' }}>
             {/* Slider */}
             <div style={{}}>
                <SliderComponent style={{ position: 'relative', zIndex: 1, borderRadius: '100px' }} arrImg={[slider1, slider2, slider3, slider4]} />
@@ -53,7 +53,7 @@ function Homepage() {
                <CardContainer>
                   {products?.data?.map((product) => {
                      return (
-                        <ProductCard key={product._id}
+                        <ProductCard style={{}} key={product._id}
                            countInStock={product.countInStock}
                            description={product.description}
                            image={product.image}
