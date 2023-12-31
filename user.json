@@ -1,0 +1,31 @@
+{
+    "name": "Quốc Thịnh"{
+      "type": "String"
+    },
+    "email": "quth2003@gmail.com"{
+      "type": "String",
+      "required": true,
+      "unique": true
+    },
+    "password": "000000"{
+      "type": "String",
+      "required": true
+    },
+    "isAdmin": true{
+      "type": "Boolean",
+      "default": false,
+      "required": true
+    },
+    "phone": 0123456789{
+      "type": "Number"
+    },
+    "address": "69 Quốc lộ 1K, Linh Xuân, Thủ Đức"{
+      "type": "String"
+    },
+    "avatar": "D:\Pictures\Amanotes_logo.png"{
+      "type": "String"
+    },
+    "city": "Hồ Chí Minh"{
+      "type": "String"
+    }
+  }

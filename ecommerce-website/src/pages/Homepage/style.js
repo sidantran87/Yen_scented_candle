@@ -12,19 +12,18 @@ export const WrapperTypeProduct = styled.div`
    &:hover {
       color: red
    }
-`
+`;
 
 export const CardContainer = styled.div`
-   padding: 0 100px;
+padding: 0 100px;
    display: flex;
+   gap:24px;
    flex-direction: row;
-   align-items: flex-start;
+   align-items: center;
    flex-wrap: wrap;
-   justify-content: space-between;
-   padding: 0 5%
-`
-
-
+   justify-content: center;
+   /* padding: 0 5% */
+`;
 
 export const FeatureCard = styled.div`
    width: 95%;
@@ -39,7 +38,7 @@ export const FeatureCard = styled.div`
    display: flex;
    justify-content: space-between;
    border-radius: 8px;
-`
+`;
 
 export const AboutContainer = styled.div`
    display: flex;
@@ -53,12 +52,14 @@ export const AboutContentWrapper = styled.div`
    align-items: flex-start;
    gap: 20px;
    padding: 0 40px;
-`
+`;
+
 export const AboutSpan = styled.span`
    font-size: 14px;
    font-weight: 400;
    color: ${success.default};
 `;
+
 export const AboutTitle = styled.span`
    font-size: 36px;
    font-weight: 600;
@@ -76,7 +77,7 @@ export const FeatureContent = styled.div`
    flex-direction: column;
    align-items: center;
    gap: 16px;
-`
+`;
 
 export const FeatureTitle = styled.span`
   font-size: 40px;
