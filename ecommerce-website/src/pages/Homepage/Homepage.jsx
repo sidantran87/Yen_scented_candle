@@ -19,7 +19,7 @@ function Homepage() {
    
    return (
       <>
-         <div style={{height:'fit-content'}}> 
+         <div style={{height:'fit-content'}}> gi
       </div>
 {/* Container */}
       <div  id='container' style={{padding: '0 60px'}}>
