@@ -6,6 +6,7 @@ import {DefaultComponent} from './components/DefautlComponent/DefaultComponent'
 // import ProductOperations from "./services/TestPage";
 
 function App() {
+  // const user = useSelector((state) = => state.user)
 
   return (
     <div style={{overflow: 'hidden'}}>
@@ -14,9 +15,11 @@ function App() {
         <Routes>
           {routes.map((route) => {
             const Page = route.page;
+            // [Thịnh]: sửa
+            const ischeckAuth = !route.isPrivate
             const Layout = route.isShowHeader ?  DefaultComponent: Fragment
             return (
-              <Route path={route.path} element={
+              <Route key={route.path} path={ischeckAuth && route.path} element={
                 <Layout>
                   <Page/>
                 </Layout>

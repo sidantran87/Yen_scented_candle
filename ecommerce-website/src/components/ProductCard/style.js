@@ -47,12 +47,48 @@ export const ProductHeader = styled.div`
    line-height: 150%;
 `
 
-export const ProductPrice = styled.div`
-   font-family: Poppins;
-   font-size: 1rem;
-   font-style: normal;
+export const PriceWrapper = styled.div`
+   justify-content: flex-start;
+   align-items: center;
+   gap: 8px;
+   display: inline-flex;
+`
+
+export const PriceDetail = styled.div`
+   justify-content: flex-start;
+   align-items: center;
+   gap: 4px;
+   display: inline-flex;
+`
+
+export const OldPrice = styled.div`
+   color: #B3B3B3;
+   font-size: 16px;
+   font-family: 'Poppins', sans-serif;
+   font-weight: 400;
+   text-decoration: line-through;
+`
+export const NewPrice = styled.div`
+   color: #2C742F;
+   font-size: 16px;
+   font-family: 'Poppins', sans-serif;
    font-weight: 500;
-   line-height: 150%; /* 1.5rem */
+`
+
+export const DiscountTag = styled.div`
+   padding-left: 10px;
+   padding-right: 10px;
+   padding-top: 3px;
+   padding-bottom: 3px;
+   background: rgba(233, 75, 72, 0.10);
+   border-radius: 30px;
+   justify-content: flex-start;
+   align-items: flex-start;
+   display: inline-flex;
+   color: #EA4B48;
+   font-size: 12px;
+   font-family: 'Poppins', sans-serif;
+   font-weight: 500;
 `
 
 export const ProductRating = styled.div`
