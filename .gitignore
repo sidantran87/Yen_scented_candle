@@ -1,0 +1,5 @@
+# Ignore node_modules in the front-end folder
+ecommerce-website/node_modules/
+
+# Ignore node_modules in the back-end folder
+yen_server/node_modules/
