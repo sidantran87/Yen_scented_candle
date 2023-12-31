@@ -49,4 +49,4 @@ module.exports = {
     genneralAccessToken,
     genneralRefreshToken,
     refreshTokenJwtService
-}
+};
