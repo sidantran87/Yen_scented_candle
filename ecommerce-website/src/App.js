@@ -8,7 +8,7 @@ import {DefaultComponent} from './components/DefautlComponent/DefaultComponent'
 function App() {
 
   return (
-    <div>
+    <div style={{overflow: 'hidden'}}>
       {/* <ProductOperations></ProductOperations> */}
       <Router>
         <Routes>

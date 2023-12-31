@@ -22,14 +22,16 @@ export const CardContainer = styled.div`
    justify-content:center;
 `
 
+
+
 export const FeatureCard = styled.div`
    width: 95%;
    height: 48px;
    padding: 40px;
    background: white;
-   z-index: 1;
-   position: absolute;
-   top: 380px;
+   z-index: 2;
+   position: relative;
+   top: -40px;
    left: 50%;
    transform: translateX(-50%);
    display: flex;

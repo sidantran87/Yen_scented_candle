@@ -1,6 +1,5 @@
 import React from 'react'
-import TypeProduct from '../../components/TypeProduct/TypeProduct'
-import { AboutContainer, AboutContent, AboutContentWrapper, AboutSpan, AboutTitle, CardContainer, FeatureCard, FeatureContent, FeatureTitle, WrapperTypeProduct } from './style'
+import { AboutContainer, AboutContent, AboutContentWrapper, AboutSpan, AboutTitle, CardContainer, FeatureCard, FeatureContent, FeatureTitle } from './style'
 import SliderComponent from '../../components/SliderComponent/SliderComponent'
 import  slider1  from '../../assets/img/slider1.jpg'
 import  slider2  from '../../assets/img/slider2.jpg'
@@ -17,25 +16,18 @@ import LineComponent from '../../components/LineComponent/LineComponent'
 
 
 function Homepage() {
-   const arr =['Yên trong vườn', "Yên trong rừng", "Yên cùng Hoàng Dũng"]
+   
    return (
       <>
-         <div style={{}}> 
-         <WrapperTypeProduct>
-            {arr.map((item) => {
-               return (
-                  <TypeProduct name={item} key={item}/>
-               )
-            })}
-         </WrapperTypeProduct>
+         <div style={{height:'fit-content'}}> 
       </div>
 {/* Container */}
-      <div  id='container' style={{background: gray.bg, padding: '0 60px', height:'5000px'}}>
+      <div  id='container' style={{padding: '0 60px'}}>
          {/* Slider */}
-         <div style={{position: 'relative'}}>
-            <SliderComponent arrImg={[slider1, slider2, slider3, slider4]}/>
+         <div style={{}}>
+            <SliderComponent style={{position: 'relative', zIndex:1, borderRadius: '100px'}} arrImg={[slider1, slider2, slider3, slider4]}/>
             {/* Feature card */}
-            <FeatureCard>
+            <FeatureCard style={{zIndex:'2'}}>
                <FeartureComponent svg={shippingIcon} title="Free Shipping" desc="Free shipping on all your order"/>
                <FeartureComponent svg={careIcon} title="Customer Support 24/7" desc="Instant access to Support"/>
                <FeartureComponent svg={bagIcon} title="100% Secure Payment" desc="We ensure your money is save"/>
@@ -43,7 +35,7 @@ function Homepage() {
             </FeatureCard>
          </div>
          {/* Feature Product Section */}
-         <div style={{marginTop:'100px', textAlign:'center' }}>
+         <div style={{ textAlign:'center' }}>
             {/* Feature Product Title */}
             <FeatureContent>
                <FeatureTitle>Feature Products</FeatureTitle>

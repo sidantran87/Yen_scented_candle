@@ -1,12 +1,15 @@
 import React from 'react'
 import {Col, Button, Badge} from 'antd'
-import { WrapperHeader, LogoText, WrapperAccount, WrapperMenu, LogoTitle, Wrapperleft } from './style'
+import { WrapperHeader, LogoText, WrapperAccount, LogoTitle, Wrapperleft } from './style'
 import SearchButton from '../SearchButtonComponent/SearchButton';
 import {success} from '../../color.js'
 import {cartIcon} from '../../components/IconComponent/IconComponent.jsx'
+import { WrapperTypeProduct } from '../../pages/Homepage/style.js';
+import TypeProduct from '../TypeProduct/TypeProduct.jsx';
 const HeaderComponent = () => {
+   const arr =['Home', "Product", "About us", "Account"]
    return (
-      <div>
+      <div style={{width: '100%', position: 'relative'}}>
          <WrapperHeader>
             <Col span={6}>
                <LogoTitle>
@@ -32,13 +35,13 @@ const HeaderComponent = () => {
             </Col>
          </WrapperHeader>
          <div>
-         <WrapperMenu  style={{fontFamily: 'Poppins'}}>
-            <li>Home</li>
-            <li>Product</li>
-            <li>About us</li>
-            <li>Account</li>
-         </WrapperMenu>
-
+         <WrapperTypeProduct>
+            {arr.map((item) => {
+               return (
+                  <TypeProduct name={item} key={item}/>
+               )
+            })}
+         </WrapperTypeProduct>
          </div>
       </div>
    )
