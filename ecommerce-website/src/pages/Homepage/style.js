@@ -17,10 +17,11 @@ export const WrapperTypeProduct = styled.div`
 export const CardContainer = styled.div`
    padding: 0 100px;
    display: flex;
-   gap: 24px;
-   align-items: center;
+   flex-direction: row;
+   align-items: flex-start;
    flex-wrap: wrap;
-   justify-content:center;
+   justify-content: space-between;
+   padding: 0 5%
 `
 
 
