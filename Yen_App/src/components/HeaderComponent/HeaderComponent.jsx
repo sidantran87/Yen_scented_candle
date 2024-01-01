@@ -7,7 +7,7 @@ import {cartIcon} from '../../components/IconComponent/IconComponent.jsx'
 import { WrapperTypeProduct } from '../../pages/Homepage/style.js';
 import TypeProduct from '../TypeProduct/TypeProduct.jsx';
 import { useNavigate } from 'react-router-dom';
-
+import logo from '../../assets/ico/logo.png'
 
 const HeaderComponent = () => {
    const arr =['Home', "Product", "About us", "Account"]
@@ -22,8 +22,8 @@ const HeaderComponent = () => {
          <WrapperHeader>
             <Col span={6}>
                <LogoTitle>
-                  <img src="https://placewaifu.com/image/999" alt="" />
-                  <LogoText  style={{fontFamily: 'Yellowtail',fontWeight: '400'}}>"Yên" Scented Candle</LogoText>
+                  <img style={{height: '50px', width: 'auto'}} src={logo} alt="" />
+                  <LogoText  style={{fontFamily: 'Poppins',fontWeight: '500'}}>Yên Candle</LogoText>
                </LogoTitle>
             </Col>
             <Col span={8}>

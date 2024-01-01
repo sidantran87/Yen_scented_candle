@@ -6,7 +6,7 @@ import ProductDetailComponent from '../../components/ProductDetail/ProductDetail
 const ProductDetailPage = () => {
    return (
       <div style={{padding: '42px 60px', background: gray.bg, height: '1000px' }}>
-         <BreadcrumComponent/>
+         {/* <BreadcrumComponent/> */}
          <ProductDetailComponent/>
       </div>
    )

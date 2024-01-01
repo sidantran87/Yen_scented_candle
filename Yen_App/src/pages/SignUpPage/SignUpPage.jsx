@@ -55,7 +55,7 @@ const SignUpPage = () => {
 
   return (
     <>
-      <BreadcrumComponent/>
+      {/* <BreadcrumComponent/> */}
       <div style={{padding: '42px 60px', background: gray.bg, height: '1000px' }}>
         <LoginCard>
             <LoginTitle>Create Account</LoginTitle>

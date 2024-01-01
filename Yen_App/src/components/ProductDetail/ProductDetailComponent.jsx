@@ -5,7 +5,10 @@ import { BuyNowBtn, CTABtn, CTAWrapper, CartBtn, DescContent, DescTitle, Descrip
 import { success, warning, gray } from '../../color'
 import {minusIcon, plusIcon} from '../../components/IconComponent/IconComponent'
 
-const ProductDetailComponent = () => {
+const ProductDetailComponent = (props) => {
+   const { countInStock, description, image, name, price, rating, type, selled, discount, id } = props
+   // Loading...: Cần map data vào những content bên dưới ProductInfo
+   const newPrice = price * (1 - discount/100);
    return (
       <Row>
          <Col span={10} style={{paddingRight:'24px'}}>
@@ -21,17 +24,17 @@ const ProductDetailComponent = () => {
          <Col span={14} style={{display: 'flex', flexDirection: 'column', alignItems: 'flex-start', justifyContent: 'center'}}>
             <div>
                <ProductDetailWrapper>
-                  <ProductName>Chinese Cabbage</ProductName>
+                  <ProductName>{name}</ProductName>
                   <ProductStatus>In Stock</ProductStatus>
                </ProductDetailWrapper>
                <div style={{paddingTop: '12px', fontFamily: 'Poppins', fontSize: '16px', color:gray[500]}}><Rate allowHalf defaultValue={5} value={5} style={{color: warning, paddingRight: '10px'}} />4 Reviews</div>
                <div style={{padding: '20px 0'}} >
                   <PriceWrapper>
                      <PriceDetail>
-                        <OldPrice>$48.00</OldPrice>
-                        <NewPrice>$17.28</NewPrice>
+                        <OldPrice>${price}</OldPrice>
+                        <NewPrice>${newPrice}</NewPrice>
                      </PriceDetail>
-                        <DiscountTag>64% off</DiscountTag>
+                        <DiscountTag>-{discount}%</DiscountTag>
                   </PriceWrapper>
                </div>
             </div>

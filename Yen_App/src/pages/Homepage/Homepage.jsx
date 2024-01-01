@@ -9,12 +9,13 @@ import ProductCard from '../../components/ProductCard/ProductCard'
 import FeartureComponent from '../../components/FeatureComponent/FeartureComponent'
 import ButtonComponent from '../../components/ButtonComponent/ButtonComponent'
 import { success, white, gray } from '../../color'
-import aboutImage1 from '../../assets/img/About1.png'
-import aboutImage2 from '../../assets/img/About2.png'
+import About1 from "../../assets/img/About1.png";
+import About2 from "../../assets/img/About2.png";
 import { shippingIcon, careIcon, bagIcon, moneybackIcon } from '../../components/IconComponent/IconComponent'
 import LineComponent from '../../components/LineComponent/LineComponent'
 import { useQuery } from '@tanstack/react-query'
 import * as ProductService from '../../services/ProductService'
+import AboutCardComponent from '../../components/AboutCardComponent/AboutCardComponent'
 
 function Homepage() {
    const fetchProductAll = async () => {
@@ -74,28 +75,18 @@ function Homepage() {
             </div>
             {/* About us Section */}
             <AboutContainer>
-               <div style={{ display: 'flex', alignItems: 'center', }}>
-                  <img src={aboutImage1} alt="" style={{ width: '500px', height: 'auto' }} />
-                  {/* Content */}
-                  <AboutContentWrapper>
-                     <AboutSpan>About us</AboutSpan>
-                     <AboutTitle>We do Creative Things for Success</AboutTitle>
-                     <AboutContent>
-                        Simply dummy text of the printing and typesetting industry. Lorem had ceased to been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley. Simply dummy text of the printing and typesetting industry. Lorem had ceased to been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley.
-                     </AboutContent>
-                  </AboutContentWrapper>
-               </div>
-               <div style={{ display: 'flex', alignItems: 'center', flexDirection: 'row-reverse' }}>
-                  <img src={aboutImage2} alt="" style={{ width: '500px', height: 'auto' }} />
-                  {/* Content */}
-                  <AboutContentWrapper>
-                     <AboutSpan>About us</AboutSpan>
-                     <AboutTitle>We do Creative Things for Success</AboutTitle>
-                     <AboutContent>
-                        Simply dummy text of the printing and typesetting industry. Lorem had ceased to been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley. Simply dummy text of the printing and typesetting industry. Lorem had ceased to been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley.
-                     </AboutContent>
-                  </AboutContentWrapper>
-               </div>
+            <AboutCardComponent
+         img={About1}
+         header="A Pioneer in Candle Craftsmanship"
+         content="Established in 1990, Yên Candle has become a leading candle brand in Vietnam, expanding internationally in 2000. Renowned for its decorative and scented candles, Yen emphasizes art, aesthetics, and spiritual significance, continuously improving product quality over nearly two decades."
+      />
+            <AboutCardComponent
+         direction='row-reverse'
+         img={About2}
+         header="Diverse Product Lines for Every Occasion"
+         content="Yen Candle offers a diverse range of products, including scented candles, decorative candles, religious candles, LED-electronic candles, insect repellent candles, and high-end accessories. Specializing in interior decoration, garden, wedding parties, and meaningful gifts, Yen's products cater to various occasions and preferences."
+      />
+               
                <ButtonComponent size='large' labelButton="Load More" style={{ background: success.default, color: white, fontFamily: 'Poppins', fontSize: '16', fontWeight: '600', borderRadius: '30px', width: '200px' }} />
             </AboutContainer>
          </div>

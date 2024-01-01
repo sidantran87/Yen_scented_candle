@@ -17,10 +17,6 @@ export const LogoTitle = styled(Col)`
    align-items: center;
    gap: 8px;
    
-   img {
-      border-radius: 100%;
-      width: 32px;
-   }
 `
 
 export const LogoText = styled.span`
