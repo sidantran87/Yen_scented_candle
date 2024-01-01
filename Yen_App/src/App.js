@@ -1,12 +1,25 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 
 import { routes } from './routes/index'
 import {DefaultComponent} from './components/DefautlComponent/DefaultComponent'
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
 // import ProductOperations from "./services/TestPage";
 
 function App() {
-  // const user = useSelector((state) = => state.user)
+  const fetchApi = async () => {
+    const res = await axios.get("http://localhost:3888/api/user")
+    return res.data
+  }
+
+  const query = useQuery({queryKey: ['todos'], queryFn: fetchApi})
+
+  // useEffect(() => {
+  //   fetchApi()
+  // }, [])
+  
+  console.log('query', query)
 
   return (
     <div style={{overflow: 'hidden'}}>

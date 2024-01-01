@@ -2,9 +2,11 @@ import React, { useState } from "react";
 import { Input } from "antd";
 
 const InputFormComponent = (props) => {
-const [valueInput, setvalueInput] = useState("");
-const { placeholder, password, ...rests } = props;
 
+const { placeholder, password, ...rests } = props;
+const handleOnChange = (e) => {
+   props.OnChange(e.target.value)
+}
 return (
    <div>
       {password ? (
@@ -13,8 +15,8 @@ return (
          size="large"
          placeholder={placeholder}
          style={{ fontFamily: "Poppins", height: "50px" }}
-         value={valueInput}
-         onChange={(e) => setvalueInput(e.target.value)}
+         valueInput={props.input}
+         onChange={handleOnChange}
          {...rests}
       />
       ) : (
@@ -23,8 +25,8 @@ return (
          size="large"
          placeholder={placeholder}
          style={{ fontFamily: "Poppins", height: "50px" }}
-         value={valueInput}
-         onChange={(e) => setvalueInput(e.target.value)}
+         valueInput={props.input}
+         onChange={handleOnChange}
          {...rests}
       />
       )}
