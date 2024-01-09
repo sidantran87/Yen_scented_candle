@@ -1,7 +1,8 @@
 const express = require("express");
 const router = express.Router()
 const OrderController = require('../controllers/orderController');
-const { authUserMiddleWare, authMiddleWare } = require("../middleware/jwt.middleware");
+const {authMiddleWare, authUserMiddleWare} = require("../middleWare/jwt.middleware")
+
 
 router.post('/create/:id', authUserMiddleWare, OrderController.createOrder)
 router.get('/get-all-order/:id',authUserMiddleWare, OrderController.getAllOrderDetails)
