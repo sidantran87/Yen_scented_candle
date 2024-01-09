@@ -1,11 +1,29 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import {WrapperPrice, WrapperRow, WrapperTitle } from './style'
 import { Checkbox, Rate } from 'antd';
 
 import {warning} from '../../color'
+import { getAllProductType } from '../../services/ProductService';
 
 const NavbarComponent = () => {
+const [result, setResult] = useState(null);
+  const [category, setCategory] = useState([]);
+  const fetchCategory = async () => {
+    try {
+      const categoryItem = await getAllProductType();
+      setCategory(categoryItem.data);
+      setResult(null);
+    } catch (error) {
+      setResult("abc");
+    }
+  }
   const onChange = () => {}
+
+  useEffect(()=> {
+    fetchCategory()
+  }, [])
+
+
   const renderContent = (type, options) => {
     switch (type) { 
       case 'checkbox':
@@ -35,15 +53,14 @@ const NavbarComponent = () => {
         return {}
     }
   }
+  const checkboxOptions = category.map((item) => ({ value: item, label: item }));
   return (
     <div style={{padding:'0', fontFamily: 'Poppins'}}>
       <div>
+      
         <WrapperTitle>All Categories</WrapperTitle>
         <WrapperRow>
-          {renderContent('checkbox', 
-            [{value: 'a', label: 'Yên trong vườn'}, 
-            {value: 'b', label: 'Yên trong rừng'}, 
-            {value: 'c', label: 'Yên trong nhà'}])}
+          {renderContent('checkbox', checkboxOptions)}
         </WrapperRow>
       </div>
       <div>
