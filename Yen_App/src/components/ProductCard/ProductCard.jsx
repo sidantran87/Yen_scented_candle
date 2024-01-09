@@ -14,8 +14,8 @@ const ProductCard = (props) => {
          style={{ width: 248 }}
          bodyStyle={{ padding: '12px 16px 16px' }}
          cover={<img
-            alt="example"
-            src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"
+            alt="hinh san pham"
+            src={image}
          />
          }
       >
