@@ -47,7 +47,7 @@ const OrderComponent = () => {
                <Column title={'Date'} dataIndex="age" key="age" />
                <Column title={'Total'} dataIndex="address" key="address" />
                <Column title={'Status'} dataIndex="tags" key="tags" render={(tags) => <Tag>{tags[0]}</Tag>} />
-               <Column title={''} dataIndex="tags" key="tags" render={() => <div style={{color: '#B2006B', fontSize: 14, fontFamily: 'Poppins', fontWeight: '500'}}>View Details</div>} />
+               <Column title={''} dataIndex="tags" key="tags" render={() => <div style={{color: '#B2006B', fontSize: 14, fontFamily: 'Poppins', fontWeight: '500'}} >View Details</div>} />
             </Table>
       </RecentOrderHistoryContainer>
       </div>

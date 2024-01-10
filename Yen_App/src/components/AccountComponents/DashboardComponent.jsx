@@ -39,7 +39,7 @@ const DashboardComponent = () => {
       <div>
            <FlexContainer>
     <ProfileContainer>
-      <img style={{width: '96px', height: '100%', borderRadius: '100%'}} src="https://scontent.fsgn5-12.fna.fbcdn.net/v/t39.30808-6/327145663_912477443085208_5657223133568033444_n.png?_nc_cat=103&ccb=1-7&_nc_sid=efb6e6&_nc_eui2=AeE2gbMASK_yco_UmybNHipyFyXNC0bAOw8XJc0LRsA7D2PzncJhC4-v4VjEcaZFafGDp2ZiSLJlQxTlv0iEAygh&_nc_ohc=j9PvM2hh1OEAX9ShFBy&_nc_ht=scontent.fsgn5-12.fna&oh=00_AfD_YtIVeRKtHpYG1Rj_E4ZOhVsV8YrGbqVDFPkKEc79Og&oe=65A29234" alt=""/>
+      <img style={{width: '96px', height: '100%', objectFit: 'contain', borderRadius: '100%'}} src="https://scontent.fsgn5-12.fna.fbcdn.net/v/t39.30808-6/327145663_912477443085208_5657223133568033444_n.png?_nc_cat=103&ccb=1-7&_nc_sid=efb6e6&_nc_eui2=AeE2gbMASK_yco_UmybNHipyFyXNC0bAOw8XJc0LRsA7D2PzncJhC4-v4VjEcaZFafGDp2ZiSLJlQxTlv0iEAygh&_nc_ohc=j9PvM2hh1OEAX9ShFBy&_nc_ht=scontent.fsgn5-12.fna&oh=00_AfD_YtIVeRKtHpYG1Rj_E4ZOhVsV8YrGbqVDFPkKEc79Og&oe=65A29234" alt=""/>
       <ProfileDetails>
         <div>Nguyen Thien Huy</div>
         <div>Customer</div>
