@@ -1,52 +1,64 @@
-import React from 'react'
-import { LaptopOutlined, NotificationOutlined, UserOutlined } from '@ant-design/icons';
+import React, { useState } from 'react';
+import {
+  GiftOutlined,
+  UserOutlined,
+} from '@ant-design/icons';
 import { Breadcrumb, Layout, Menu, theme } from 'antd';
-const { Header, Content, Sider } = Layout;
+const { Header, Content, Footer, Sider } = Layout;
 
-const items2 = [UserOutlined, LaptopOutlined, NotificationOutlined].map((icon, index) => {
-  const key = String(index + 1);
+function getItem(label, key, icon, children) {
   return {
-    key: `sub${key}`,
-    icon: React.createElement(icon),
-    label: `subnav ${key}`,
-    children: new Array(4).fill(null).map((_, j) => {
-      const subKey = index * 4 + j + 1;
-      return {
-        key: subKey,
-        label: `option${subKey}`,
-      };
-    }),
+    key,
+    icon,
+    children,
+    label,
   };
-});
+}
+const items = [
+  getItem('User', 'sub1', <UserOutlined />, [
+    getItem('Tom', '3'),
+    getItem('Bill', '4'),
+    getItem('Alex', '5'),
+  ]),
+  getItem('Product', 'sub2', <GiftOutlined />, [
+    getItem('Team 1', '6'),
+    getItem('Team 2', '8')
+  ]),
+];
 
 const AdminPage = () => {
+  const [collapsed, setCollapsed] = useState(false);
   const {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
 
+  // const handleOnClick = ({ key }) => {
+  //   setKeySelected(key)
+  // };
+
   return (
-    <Layout>
+    <Layout
+      style={{
+        minHeight: '100vh',
+      }}
+    >
+      <Sider collapsible collapsed={collapsed} onCollapse={(value) => setCollapsed(value)}>
+        <div className="demo-logo-vertical" />
+        <Menu
+          updated
+          theme="dark"
+          // defaultSelectedKeys={['1']}
+          mode="inline"
+          items={items} />
+        {/* onClick={handleOnClick} /> */}
+        {/* <div style={{flex: 1}}>
+            {keySelected === '2' && <span>Key la 2</span>}
+          </div> */}
+      </Sider>
       <Layout>
-        <Sider
-          width={200}
+        <Content
           style={{
-            background: colorBgContainer,
-          }}
-        >
-          <Menu
-            mode="inline"
-            defaultSelectedKeys={['1']}
-            defaultOpenKeys={['sub1']}
-            style={{
-              height: '100%',
-              borderRight: 0,
-            }}
-            items={items2}
-          />
-        </Sider>
-        <Layout
-          style={{
-            padding: '0 24px 24px',
+            margin: '0 16px',
           }}
         >
           <Breadcrumb
@@ -54,25 +66,30 @@ const AdminPage = () => {
               margin: '16px 0',
             }}
           >
-            <Breadcrumb.Item>Home</Breadcrumb.Item>
-            <Breadcrumb.Item>List</Breadcrumb.Item>
-            <Breadcrumb.Item>App</Breadcrumb.Item>
+            <Breadcrumb.Item>User</Breadcrumb.Item>
+            <Breadcrumb.Item>Bill</Breadcrumb.Item>
           </Breadcrumb>
-          <Content
+          <div
             style={{
               padding: 24,
-              margin: 0,
-              minHeight: 280,
+              minHeight: 360,
               background: colorBgContainer,
               borderRadius: borderRadiusLG,
             }}
           >
-            Content
-          </Content>
-        </Layout>
+            Bill is a cat.
+          </div>
+        </Content>
+        <Footer
+          style={{
+            textAlign: 'center',
+          }}
+        >
+          Ant Design ©2023 Created by Ant UED
+        </Footer>
       </Layout>
     </Layout>
   );
-}
+};
 
 export default AdminPage
