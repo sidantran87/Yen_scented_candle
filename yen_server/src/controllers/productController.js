@@ -1,5 +1,6 @@
 const ProductService = require("../services/productService");
 
+// Tạo một sản phẩm mới
 const createProduct = async (req, res) => {
   try {
     const {
@@ -12,12 +13,16 @@ const createProduct = async (req, res) => {
       description,
       discount,
     } = req.body;
+
+    // Kiểm tra thông tin đầu vào
     if (!name || !image || !type || !price || !countInStock || !rating) {
       return res.status(200).json({
         status: "Err",
         messgae: "Invalid input!",
       });
     }
+
+    // Gọi service để tạo sản phẩm
     const response = await ProductService.createProduct(req.body);
 
     return res.status(200).json(response);
@@ -28,38 +33,21 @@ const createProduct = async (req, res) => {
   }
 };
 
-// const updateProduct = async (req, res) => {
-//   try {
-//     const productId = req.params.id;
-//     const data = req.body;
-
-//     if (!productId) {
-//       return res.status(200).json({
-//         status: "OKE",
-//         message: "None Product ID input!",
-//       });
-//     }
-
-//     const response = await ProductService.updateProduct(productId, data);
-//     return res.status(200).json(response.data);
-//   } catch (error) {
-//     return res.status(404).json({
-//       message: error,
-//     });
-//   }
-// };
-
-// update 1 product
+// Cập nhật thông tin của một sản phẩm
 const updateProduct = async (req, res) => {
   try {
     const productId = req.params.id;
     const data = req.body;
+
+    // Kiểm tra ID sản phẩm
     if (!productId) {
       return res.status(200).json({
         status: "ERR",
         message: "No product Id provided!",
       });
     }
+
+    // Gọi service để cập nhật sản phẩm
     const response = await ProductService.updateProduct(productId, data);
     return res.status(200).json(response.data);
   } catch (e) {
@@ -69,17 +57,20 @@ const updateProduct = async (req, res) => {
   }
 };
 
-// delete 1 products
+// Xóa một sản phẩm
 const deleteProduct = async (req, res) => {
   try {
     const productId = req.params.id;
 
+    // Kiểm tra ID sản phẩm
     if (!productId) {
       return res.status(400).json({
         status: "ERR",
         message: "No Product Id provided!",
       });
     }
+
+    // Gọi service để xóa sản phẩm
     const response = await ProductService.deleteProduct(productId);
 
     if (response.status === "ERR") {
@@ -96,17 +87,20 @@ const deleteProduct = async (req, res) => {
   }
 };
 
-// delete many products
-
+// Xóa nhiều sản phẩm
 const deleteMany = async (req, res) => {
   try {
     const ids = req.params.ids;
+
+    // Kiểm tra ID sản phẩm
     if (!ids) {
       return {
         error: "Err",
         message: "No Ids are provided!!!",
       };
     }
+
+    // Gọi service để xóa nhiều sản phẩm
     const response = await ProductService.deleteManyPs(ids);
     return res.status(200).json(response);
   } catch (error) {
@@ -116,17 +110,19 @@ const deleteMany = async (req, res) => {
   }
 };
 
-// get All products
-
+// Lấy tất cả sản phẩm
 const getAll = async (req, res) => {
   try {
     const { limit, page, sort, filter } = req.query;
+
+    // Gọi service để lấy tất cả sản phẩm
     const response = await ProductService.getAllProduct(
       Number(limit) || null,
       Number(page) || null,
       sort,
       filter
     );
+
     return res.status(200).json(response);
   } catch (error) {
     return res.status(404).json({
@@ -135,9 +131,10 @@ const getAll = async (req, res) => {
   }
 };
 
-// get all Types
+// Lấy tất cả loại sản phẩm
 const getAllType = async (req, res) => {
   try {
+    // Gọi service để lấy tất cả loại sản phẩm
     const response = await ProductService.getAllType();
     return res.status(200).json(response);
   } catch (error) {
@@ -147,11 +144,12 @@ const getAllType = async (req, res) => {
   }
 };
 
-// get Detail Product
-
+// Lấy chi tiết của một sản phẩm
 const getDetailProduct = async (req, res) => {
   try {
     const idProduct = req.params.id;
+
+    // Kiểm tra ID sản phẩm
     if (!idProduct) {
       return {
         status: "Err",
@@ -159,6 +157,7 @@ const getDetailProduct = async (req, res) => {
       };
     }
 
+    // Gọi service để lấy chi tiết sản phẩm
     const response = await ProductService.getDetailProduct(idProduct);
     return res.status(200).json(response);
   } catch (error) {
@@ -175,5 +174,5 @@ module.exports = {
   deleteMany,
   getAll,
   getAllType,
-  getDetailProduct
+  getDetailProduct,
 };

@@ -1,15 +1,15 @@
 
 export const green = {
-   900: '#002603',
-   800: '#173B1A',
-   700: '#2B572E',
-   600: '#406B42',
-   500: '#618062',
-   400: '#7A997C',
-   300: '#96B297',
-   200: '#B4CCB4',
-   100: '#DAE5DA',
-   50: '#EDF2EE',
+   900: '#260015',
+   800: '#3B1728',
+   700: '#572B40',
+   600: '#6B4055',
+   500: '#806170',
+   400: '#997A90',
+   300: '#B296AB',
+   200: '#CCB4C5',
+   100: '#E5DAE2',
+   50: '#F2EDF1',
 };
 
 export const gray = {
@@ -29,9 +29,9 @@ export const gray = {
 export const white = '#FFF';
 
 export const success = {
-   bright: '#84D187',
-   default: '#00B207',
-   dark: '#2C742F',
+   bright: '#D184A4',
+   default: '#B2006B',
+   dark: '#742C57',
 };
 
 export const warning = '#FF8A00';

@@ -36,9 +36,8 @@ export const LogoTitle = styled(Col)`
 `
 
 export const LogoText = styled.span`
-   font-weight: bold;
-   font-size: 32px;
-   font-weight: '500';
+   font-size: 26px;
+   font-weight: 500;
    color: #000;
    text-align: center
 `
@@ -142,11 +141,11 @@ export const Special = styled.div`
   font-size: 14px;
   font-family: 'Poppins';
   font-weight: 500;
-  box-shadow: 0px 1.5px 0px #20B526;
+  box-shadow: 0px 1.5px 0px ${success.default};
 `
 
 export const SpecialOr = styled.div`
-  color: #808080;
+  color: ${gray[500]};
   font-size: 16px;
   font-family: 'Poppins';
   font-weight: 400;

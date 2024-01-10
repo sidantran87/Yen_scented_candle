@@ -6,12 +6,9 @@ export const WrapperTypeProduct = styled.div`
    justify-content: flex-start;
    gap: 32px;
    font-size: 1rem;
-   color: black;
+   color: ${gray[600]};
    cursor: pointer;
    
-   &:hover {
-      color: red
-   }
 `;
 
 export const CardContainer = styled.div`

@@ -1,95 +1,123 @@
-import React, { useState } from 'react';
-import {
-  GiftOutlined,
-  UserOutlined,
-} from '@ant-design/icons';
-import { Breadcrumb, Layout, Menu, theme } from 'antd';
-const { Header, Content, Footer, Sider } = Layout;
+import { Menu } from 'antd'
+import React, { useEffect, useState } from 'react'
+import { getItem } from '../../utils';
+import { UserOutlined, AppstoreOutlined, ShoppingCartOutlined } from '@ant-design/icons'
+import HeaderComponent from '../../components/HeaderComponent/HeaderComponent';
+// import AdminUser from '../../components/AdminUser/AdminUser';
+// import AdminProduct from '../../components/AdminProduct/AdminProduct';
+// import OrderAdmin from '../../components/OrderAdmin/OrderAmin';
+// import * as OrderService from '../../services/OrderService'
+// import * as ProductService from '../../services/ProductService'
+// import * as UserService from '../../services/UserService'
 
-function getItem(label, key, icon, children) {
-  return {
-    key,
-    icon,
-    children,
-    label,
-  };
-}
-const items = [
-  getItem('User', 'sub1', <UserOutlined />, [
-    getItem('Tom', '3'),
-    getItem('Bill', '4'),
-    getItem('Alex', '5'),
-  ]),
-  getItem('Product', 'sub2', <GiftOutlined />, [
-    getItem('Team 1', '6'),
-    getItem('Team 2', '8')
-  ]),
-];
+import CustomizedContent from './components/CustomizedContent';
+import { useSelector } from 'react-redux';
+import { useQueries } from '@tanstack/react-query';
+import { useMemo } from 'react';
+import Loading from '../../components/LoadingComponent/Loading';
 
 const AdminPage = () => {
-  const [collapsed, setCollapsed] = useState(false);
-  const {
-    token: { colorBgContainer, borderRadiusLG },
-  } = theme.useToken();
+  const user = useSelector((state) => state?.user)
 
-  // const handleOnClick = ({ key }) => {
-  //   setKeySelected(key)
-  // };
+  const items = [
+    getItem('Người dùng', 'users', <UserOutlined />),
+    getItem('Sản phẩm', 'products', <AppstoreOutlined />),
+    getItem('Đơn hàng', 'orders', <ShoppingCartOutlined />),
+    
+  ];
 
+  const [keySelected, setKeySelected] = useState('');
+  // const getAllOrder = async () => {
+  //   const res = await OrderService.getAllOrder(user?.access_token)
+  //   return {data: res?.data, key: 'orders'}
+  // }
+
+  // const getAllProducts = async () => {
+  //   const res = await ProductService.getAllProduct()
+  //   console.log('res1', res)
+  //   return {data: res?.data, key: 'products'}
+  // }
+
+  // const getAllUsers = async () => {
+  //   const res = await UserService.getAllUser(user?.access_token)
+  //   console.log('res', res)
+  //   return {data: res?.data, key: 'users'}
+  // }
+
+  const queries = useQueries({
+    queries: [
+      // {queryKey: ['products'], queryFn: getAllProducts, staleTime: 1000 * 60},
+      // {queryKey: ['users'], queryFn: getAllUsers, staleTime: 1000 * 60},
+      // {queryKey: ['orders'], queryFn: getAllOrder, staleTime: 1000 * 60},
+    ]
+  })
+  const memoCount = useMemo(() => {
+    const result = {}
+    try {
+      if(queries) {
+        queries.forEach((query) => {
+          result[query?.data?.key] = query?.data?.data?.length
+        })
+      }
+    return result
+    } catch (error) {
+      return result
+    }
+  },[queries])
+  const COLORS = {
+  users: ['#e66465', '#9198e5'],
+  products: ['#a8c0ff', '#3f2b96'],
+  orders: ['#11998e', '#38ef7d'],
+  };
+
+  const renderPage = (key) => {
+    switch (key) {
+      // case 'users':
+      //   return (
+      //     <AdminUser />
+      //   )
+      // case 'products':
+      //   return (
+      //     <AdminProduct />
+      //   )
+      // case 'orders':
+      //   return (
+      //     <OrderAdmin />
+      //   )
+      // default:
+      //   return <></>
+    }
+  }
+
+  const handleOnCLick = ({ key }) => {
+    setKeySelected(key)
+  }
+  console.log('memoCount', memoCount)
   return (
-    <Layout
-      style={{
-        minHeight: '100vh',
-      }}
-    >
-      <Sider collapsible collapsed={collapsed} onCollapse={(value) => setCollapsed(value)}>
-        <div className="demo-logo-vertical" />
+    <>
+      <HeaderComponent isHiddenSearch isHiddenCart />
+      <div style={{ display: 'flex',overflowX: 'hidden' }}>
         <Menu
-          updated
-          theme="dark"
-          // defaultSelectedKeys={['1']}
           mode="inline"
-          items={items} />
-        {/* onClick={handleOnClick} /> */}
-        {/* <div style={{flex: 1}}>
-            {keySelected === '2' && <span>Key la 2</span>}
-          </div> */}
-      </Sider>
-      <Layout>
-        <Content
           style={{
-            margin: '0 16px',
+            width: 256,
+            boxShadow: '1px 1px 2px #ccc',
+            height: '100vh'
           }}
-        >
-          <Breadcrumb
-            style={{
-              margin: '16px 0',
-            }}
-          >
-            <Breadcrumb.Item>User</Breadcrumb.Item>
-            <Breadcrumb.Item>Bill</Breadcrumb.Item>
-          </Breadcrumb>
-          <div
-            style={{
-              padding: 24,
-              minHeight: 360,
-              background: colorBgContainer,
-              borderRadius: borderRadiusLG,
-            }}
-          >
-            Bill is a cat.
-          </div>
-        </Content>
-        <Footer
-          style={{
-            textAlign: 'center',
-          }}
-        >
-          Ant Design ©2023 Created by Ant UED
-        </Footer>
-      </Layout>
-    </Layout>
-  );
-};
+          items={items}
+          onClick={handleOnCLick}
+        />
+        <div style={{ flex: 1, padding: '15px 0 15px 15px' }}>
+          <Loading isLoading={memoCount && Object.keys(memoCount) &&  Object.keys(memoCount).length !== 3}>
+            {!keySelected && (
+              <CustomizedContent data={memoCount} colors={COLORS} setKeySelected={setKeySelected} />
+            )}
+          </Loading>
+          {renderPage(keySelected)}
+        </div>
+      </div>
+    </>
+  )
+}
 
 export default AdminPage

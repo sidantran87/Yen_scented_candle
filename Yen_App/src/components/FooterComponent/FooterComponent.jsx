@@ -9,7 +9,7 @@ const FooterComponent = () => {
         <SubcribeWrapper>
           <LogoTitle>
               <img src="https://placewaifu.com/image/999" alt="" />
-              <LogoText  style={{fontFamily: 'Yellowtail',fontWeight: '400'}}>"Yên" Scented Candle</LogoText>
+              <LogoText  style={{fontFamily: 'Poppins'}}>Yên Candle</LogoText>
           </LogoTitle>
           <div>
             <SubscribeHeader>Subcribe our Newsletter</SubscribeHeader>

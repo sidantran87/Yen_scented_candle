@@ -1,7 +1,7 @@
 const { Promise } = require("mongoose");
 const Product = require("../models/productModel");
 
-// create product
+// Tạo sản phẩm mới
 const createProduct = async (newProduct) => {
   const {
     name,
@@ -14,6 +14,7 @@ const createProduct = async (newProduct) => {
     discount,
   } = newProduct;
   try {
+    // Kiểm tra xem sản phẩm đã tồn tại chưa
     const checkExistedProduct = await Product.findOne({
       name: name,
     });
@@ -25,6 +26,7 @@ const createProduct = async (newProduct) => {
       };
     }
 
+    // Tạo sản phẩm mới
     const createdProduct = await Product.create({
       name,
       image,
@@ -48,11 +50,12 @@ const createProduct = async (newProduct) => {
   }
 };
 
-// update product
+// Cập nhật thông tin sản phẩm
 const updateProduct = async (id, data) => {
   try {
     console.log("-------------need updated product ID:", id);
 
+    // Kiểm tra xem sản phẩm đã tồn tại chưa
     const existingProduct = await Product.findOne({ _id: id });
 
     console.log("Existing product:", existingProduct._id);
@@ -64,6 +67,7 @@ const updateProduct = async (id, data) => {
       };
     }
 
+    // Cập nhật thông tin sản phẩm
     const updatedProduct = await Product.findByIdAndUpdate(id, data, {
       new: true,
     });
@@ -81,11 +85,12 @@ const updateProduct = async (id, data) => {
   }
 };
 
-// delete 1 product
+// Xóa một sản phẩm
 const deleteProduct = async (id) => {
   try {
     console.log("---------Need to delete product id:", id);
 
+    // Kiểm tra xem sản phẩm đã tồn tại chưa
     const checkExistedProduct = await Product.findOne({
       _id: id,
     });
@@ -99,6 +104,7 @@ const deleteProduct = async (id) => {
       };
     }
 
+    // Xóa sản phẩm
     const deletedProduct = await Product.findByIdAndDelete(id);
 
     console.log("Deleted product:", deletedProduct);
@@ -113,11 +119,11 @@ const deleteProduct = async (id) => {
   }
 };
 
-// delete many product
+// Xóa nhiều sản phẩm
 const deleteManyPs = async (ids) => {
   try {
     console.log("ids", ids);
-    await Product.deleleMany({ _id: ids });
+    await Product.deleteMany({ _id: ids });
     return {
       status: "Oke",
       message: "Delete product successfully",
@@ -129,17 +135,15 @@ const deleteManyPs = async (ids) => {
   }
 };
 
-// get all products
-
+// Lấy thông tin tất cả sản phẩm
 const getAllProduct = async (limit, page, sort, filter) => {
   try {
     const totalProduct = await Product.countDocuments();
     let allProduct = [];
     if (filter) {
-      // filter [0] thuong la cho can filter
+      // Lọc sản phẩm dựa trên điều kiện
       const label = filter[0];
       const allObjectFilter = await Product.find({
-        // hieu la key [lable]
         [label]: { $regex: filter[1] },
       })
         .limit(limit)
@@ -158,7 +162,7 @@ const getAllProduct = async (limit, page, sort, filter) => {
 
     if (sort) {
       const objectSort = {};
-      // sort[0] la tinh chat sort, sort[1] la thu can sort. No se ra kieu {name: desc}
+      // Sắp xếp sản phẩm theo điều kiện
       objectSort[sort[1]] = sort[0];
       const allProductSort = await Product.find()
         .limit(limit)
@@ -175,6 +179,7 @@ const getAllProduct = async (limit, page, sort, filter) => {
       };
     }
 
+    // Lấy tất cả sản phẩm
     if (!limit) {
       allProduct = await Product.find().sort({ createAt: -1, updateAt: -1 });
     } else {
@@ -198,9 +203,10 @@ const getAllProduct = async (limit, page, sort, filter) => {
   }
 };
 
-// get all types of products
+// Lấy tất cả loại sản phẩm
 const getAllType = async () => {
   try {
+    // Lấy tất cả loại sản phẩm không trùng lặp
     const allType = await Product.distinct("type");
     return {
       status: "Oke",
@@ -213,10 +219,10 @@ const getAllType = async () => {
   }
 };
 
-// get detail product
-
+// Lấy thông tin chi tiết sản phẩm
 const getDetailProduct = async (id) => {
   try {
+    // Lấy thông tin sản phẩm dựa trên ID
     const product = await Product.findOne({
       _id: id,
     });
@@ -246,5 +252,5 @@ module.exports = {
   deleteManyPs,
   getAllProduct,
   getAllType,
-  getDetailProduct
+  getDetailProduct,
 };

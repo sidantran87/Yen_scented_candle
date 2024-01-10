@@ -1,11 +1,15 @@
 import React from "react";
 import { ProductHeader, ProductInfo, ProductInfoWrapper, ProductPrice, ProductDiscount, ProductRating, WrapperCard, PriceWrapper, PriceDetail, OldPrice, NewPrice, DiscountTag } from "./style";
 import { warning } from '../../color.js'
+import { useNavigate } from "react-router-dom";
 // const { Meta } = Card;
 
 const ProductCard = (props) => {
-   const { countInStock, description, image, name, price, rating, type, selled, discount, id } = props
-   // Loading...: Cần map data vào những content bên dưới ProductInfo
+   const { countInStock, description, image, name, price, rating, type, discount, selled, id } = props
+   const navigate = useNavigate()
+    const handleDetailsProduct = (id) => {
+      navigate(`/product-detail/${id}`)
+    }
    const newPrice = price * (1 - discount/100);
 
    return (
@@ -14,8 +18,9 @@ const ProductCard = (props) => {
          style={{ width: 248 }}
          bodyStyle={{ padding: '12px 16px 16px' }}
          cover={<img
-            alt="example"
-            src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"
+            alt="hinh san pham"
+            src={image}
+         onClick={() => handleDetailsProduct(id)}
          />
          }
       >
