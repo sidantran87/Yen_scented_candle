@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import BreadcrumComponent from '../../components/BreadcrumComponent/BreadcrumComponent'
 import Loading from '../../components/LoadingComponent/Loading'
 import { gray } from '../../color'
@@ -10,6 +10,7 @@ import { BoldText } from '../../components/ProductDetail/style'
 import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import { useMutationHooks } from '../../hooks/useMutationHook'
+import * as Message from '../../components/Message/Message'
 
 import { useMutation } from '@tanstack/react-query'
 
@@ -25,6 +26,7 @@ const SignUpPage = () => {
   const [email, setMail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [acceptBox, setAcceptBox] = useState('')
 
   const handleOnChangeEmail = (value) => {
   setMail(value)
@@ -39,15 +41,24 @@ const SignUpPage = () => {
   setConfirmPassword(value)
   }
 
-  const mutation = useMutation({
-    mutationFn: data => UserService.signupUser(data)
-  })
+  const handleOnchangeAcceptBox = (value) => {
+    setAcceptBox(value)
+  }
 
-  // const mutation = useMutationHooks(
-  //   data => UserService.signupUser(data)
-  // )
+  const mutation = useMutationHooks(
+    data => UserService.signupUser(data)
+  )
 
-  // const { data, isLoading, isSuccess, isError } = mutation
+  const { data, isLoading, isSuccess, isError } = mutation
+
+  useEffect(() => {
+    if (isSuccess) {
+      Message.success()
+      handleSignInCLick()
+    } else if (isError) {
+      Message.error()
+    }
+  }, [isSuccess, isError])
 
   const handleSignUp = () => {
   mutation.mutate({ email, password, confirmPassword })
@@ -67,12 +78,12 @@ const SignUpPage = () => {
               </FieldInput>
               <LinkField>
                   <Remember>
-                    <Checkbox/> <NormalText>Accept all terms & Conditionse</NormalText>
+                    <Checkbox checked={acceptBox} onChange={(e) => handleOnchangeAcceptBox(e.target.checked)}/> <NormalText>Accept all terms & Conditionse</NormalText>
                   </Remember>
               </LinkField>
             </Field>
             {/* <Loading> */}
-            <LoginBtn disabled={!email.length ||  !password.length || !confirmPassword.length}  onClick={handleSignUp} size='large'type='primary'>Create Account</LoginBtn>
+            <LoginBtn disabled={!email.length ||  !password.length || !confirmPassword.length || !acceptBox}  onClick={handleSignUp} size='large'type='primary'>Create Account</LoginBtn>
             {/* </Loading> */}
             <SignupLink>
               <NormalText>Already have account</NormalText>

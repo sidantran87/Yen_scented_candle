@@ -16,7 +16,7 @@ export const LogoTitle = styled(Col)`
    display: flex;
    align-items: center;
    gap: 8px;
-   
+   cursor: pointer;
 `
 
 export const LogoText = styled.span`

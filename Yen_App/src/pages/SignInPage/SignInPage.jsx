@@ -14,17 +14,23 @@ import { useMutationHooks } from '../../hooks/useMutationHook'
 
 
 const SignInPage = () => {
+  const [email, setMail] = useState('');
+  const [password, setPassword] = useState('');
+
+
   const navigate = useNavigate()
-  const handleSignUpCLick = () => {
-    navigate('/sign-up')
-  }
 
   const mutation = useMutationHooks(
     data => UserService.loginUser(data)
   )
+  const { data, isLoading, isSuccess, isError } = mutation
+  console.log('mutation: ',mutation)
 
-  const [email, setMail] = useState('');
-  const [password, setPassword] = useState('');
+
+  const handleSignUpCLick = () => {
+    navigate('/sign-up')
+  }
+
 
   const handleOnChangeEmail = (value) => {
   setMail(value)
@@ -34,9 +40,6 @@ const SignInPage = () => {
   const handleOnchangePassword = (value) => {
   setPassword(value)
   }
-
-
-  const { data, isLoading, isSuccess, isError } = mutation
 
   const handleSignin = () => {
     mutation.mutate({ email, password })

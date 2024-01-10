@@ -22,7 +22,7 @@ function App() {
   console.log('query', query)
 
   return (
-    <div style={{overflow: 'hidden'}}>
+    <div style={{overflowX: 'hidden', height:'100vh', width: '100%'}}>
       {/* <ProductOperations></ProductOperations> */}
       <Router>
         <Routes>
