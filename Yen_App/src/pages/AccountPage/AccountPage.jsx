@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { Table, Tag } from 'antd';
-import { gray } from '../../color';
 import DashboardComponent from '../../components/AccountComponents/DashboardComponent';
 import OrderComponent from '../../components/AccountComponents/OrderComponent';
 import { useNavigate } from 'react-router-dom';
 import { Container, ContentContainer, Header, NavigationItem, Sidebar } from './style';
 import OrderDetailComponent from '../../components/AccountComponents/OrderDetailComponent';
+import * as UserService from '../../services/UserService'
+import { resetUser } from '../../redux/slides/userSlide'
+import { useDispatch } from 'react-redux';
 
 const { Column } = Table;
 
@@ -13,6 +15,7 @@ const { Column } = Table;
 const AccountPage = () => {
 
 const navigate = useNavigate();
+const dispatch = useDispatch()
 
 const handleOnClick = () => {
    navigate(`/`);
@@ -39,6 +42,11 @@ const handleViewDetails = () => {
 setSelectedNavItem('orderDetail');
 };
 
+const handleLogout = async () => {
+   await UserService.logoutUser()
+   dispatch(resetUser())
+ }
+
 return (
    <>
    <Container>
@@ -47,7 +55,7 @@ return (
          <div>
             <NavigationItem onClick={() => setSelectedNavItem('dashboard')}>Dashboard</NavigationItem>
             <NavigationItem onClick={() => setSelectedNavItem('orderHistory')}>Order History</NavigationItem>
-            <NavigationItem onClick={() => handleOnClick()}>Log-out</NavigationItem>
+            <NavigationItem onClick={() => handleLogout()}>Log-out</NavigationItem>
          </div>
       </Sidebar>
 
