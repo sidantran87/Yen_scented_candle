@@ -1,6 +1,5 @@
 const Order = require("../models/orderProductModel");
 const Product = require("../models/productModel");
-const EmailService = require("../services/emailService");
 
 // Hàm tạo đơn hàng mới
 const createOrder = (newOrder) => {
@@ -86,14 +85,13 @@ const createOrder = (newOrder) => {
           isPaid,
           paidAt,
         });
-        // Gửi email thông báo đơn hàng được tạo
-        if (createdOrder) {
-          await EmailService.sendEmailCreateOrder(email, orderItems);
-          resolve({
-            status: "OK",
-            message: "success",
-          });
-        }
+
+        // Send a success response after creating the order
+        resolve({
+          status: "OK",
+          message: "Order created successfully",
+          order: createdOrder,
+        });
       }
     } catch (e) {
       // Xử lý lỗi nếu có
@@ -101,6 +99,7 @@ const createOrder = (newOrder) => {
     }
   });
 };
+
 
 // Hàm lấy thông tin tất cả đơn hàng của một người dùng
 const getAllOrderDetails = (id) => {
