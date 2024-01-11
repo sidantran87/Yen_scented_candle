@@ -1,5 +1,5 @@
    import styled from 'styled-components';
-import { gray } from '../../color';
+import { gray, success } from '../../color';
 
    export const FlexContainer = styled.div`
    display: flex;
@@ -33,11 +33,11 @@ import { gray } from '../../color';
    `;
 
    export const EditProfileLink = styled.div`
-   color: #B2006B;
+   color: ${success.default};
    font-size: 16px;
-   font-family: 'Poppins';
    font-weight: 500;
    padding-top: 26px;
+   cursor: pointer
    `;
 
    export const AddressContainer = styled.div`
@@ -48,9 +48,8 @@ import { gray } from '../../color';
    `;
 
    export const BillingTitle = styled.div`
-   color: #999999;
+   color: ${success.default};
    font-size: 14px;
-   font-family: 'Poppins';
    font-weight: 500;
    text-transform: uppercase;
    `;
@@ -63,11 +62,11 @@ import { gray } from '../../color';
    `;
 
    export const EditAddressLink = styled.div`
-   color: #B2006B;
+   color: ${success.default};
    font-size: 16px;
-   font-family: 'Poppins';
    font-weight: 500;
    padding-top: 26px;
+   cursor: pointer
    `;
 
    export const RecentOrderHistoryContainer = styled.div`
@@ -83,29 +82,36 @@ import { gray } from '../../color';
    `;
 
    export const OrderHistoryTitle = styled.div`
-   color: #1A1A1A;
+   color: ${success.default};
    font-size: 20px;
-   font-family: 'Poppins';
    font-weight: 500;
    `;
 
    export const ViewAllLink = styled.div`
-   color: #B2006B;
+   color: ${success.default};
    font-size: 16px;
-   font-family: 'Poppins';
    font-weight: 500;
+   cursor: pointer;
    `;
 
+export const OrderDetailBox = styled.div`
+  height: fit-content;
+  border: 1px solid ${gray[100]};
+  border-radius: 8px;
+  padding: 20px;
+  gap: 20px;
+`;
+
    export const PinkText = styled.div`
-   color: #B2006B;
+   color: ${success.default};
    font-size: 14px;
-   font-family: 'Poppins';
    font-weight: 500;
+   cursor: pointer;
    `;
    export const OrderDetailsContainer = styled.div`
    display: flex;
    height: fit-content;
-   border: 1px solid black;
+   border: 1px solid ${gray[100]};
    border-radius: 8px;
    padding: 20px;
    gap: 20px;
@@ -118,53 +124,47 @@ export const OrderDetailsHeader = styled.div`
 `;
 
 export const OrderDetailsTitle = styled.div`
-   color: #1A1A1A;
+   color: ${gray[900]};
    font-size: 20px;
-   font-family: 'Poppins';
    font-weight: 500;
 `;
 
 export const OrderDetailsDate = styled.div`
-   color: #4D4D4D;
+   color: ${gray[400]};
    font-size: 14px;
-   font-family: 'Poppins';
    font-weight: 400;
 `;
 export const OrderHeader = styled.div`
-color: #999999;
+color: ${gray[400]};
 font-size: 14px;
-font-family: 'Poppins';
 font-weight: 500;
 text-transform: uppercase;
 padding: 0 0 18px;
 `;
 
 export const OrderName = styled.div`
-  color: #1A1A1A;
+  color: ${gray[900]};
   font-size: 16px;
-  font-family: 'Poppins';
   font-weight: 400;
   padding: 14px 0 8px;
 `;
 
 export const OrderAdd = styled.div`
-  color: #666666;
+  color: ${gray[600]};
   font-size: 14px;
-  font-family: 'Poppins';
   font-weight: 400;
 `;
 export const OrderRowTitle = styled.div`
-  color: #999999;
+  color: ${gray[400]};
   font-size: 12px;
-  font-family: 'Poppins';
+
   font-weight: 500;
   text-transform: uppercase;
 `;
 export const OrderRowDetail = styled.div`
   width: 282px;
-  color: #1A1A1A;
+  color: ${gray[900]};
   font-size: 14px;
-  font-family: 'Poppins';
   font-weight: 400;
 `;
 
@@ -188,15 +188,15 @@ export const PhoneRowContainer = styled.div`
 `;
 
 export const PaymentContainer = styled.div`
-  border: 1px solid black;
+  border: 1px solid ${gray[100]};
   border-radius: 8px;
   flex: 1;
 `;
 
 export const PaymentDetail1 = styled.div`
-  color: #1A1A1A;
+  color: ${gray[900]};
   font-size: 14px;
-  font-family: 'Poppins';
+
   font-weight: 400;
 `
 export const PaymentDetailContainer1 = styled.div`
@@ -211,27 +211,33 @@ export const PaymentRow = styled.div`
   padding: 12px 0;
 `
 export const PaymentHeader = styled.div`
-  color: #666666;
+  color: ${gray[600]};
   font-size: 14px;
-  font-family: 'Poppins';
+
   font-weight: 400;
 `;
 export const PaymentBody = styled.div`
-  color: #1A1A1A;
+  color: ${gray[900]};
   font-size: 14px;
-  font-family: 'Poppins';
+
   font-weight: 500;
 `;
 export const TotalHeader = styled.div`
-  color: #1A1A1A;
+  color: ${gray[900]};
   font-size: 18px;
-  font-family: 'Poppins';
+
   font-weight: 400;
 `;
 
 export const TotalBody = styled.div`
   color: #742C57;
   font-size: 18px;
-  font-family: 'Poppins';
+
   font-weight: 600;
+`;
+
+export const Divider = styled.div`
+  width: 100%;
+  height: 1px;
+  background-color: ${gray[100]}
 `;
