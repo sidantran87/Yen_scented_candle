@@ -1,5 +1,7 @@
 import axios from "./axios";
 
+export const axiosJWT = axios.create()
+
 export const loginUser = async (data) => {
   try {
     const res = await axios.post("/user/sign-in", data);
