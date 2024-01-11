@@ -1,7 +1,7 @@
 import { Steps, Table, Tag } from 'antd'
 import React from 'react'
 import { gray, success } from '../../color';
-import { Divider, EmailRowContainer, OrderAdd, OrderDetailBox, OrderDetailsContainer, OrderDetailsDate, OrderDetailsHeader, OrderDetailsTitle, OrderHeader, OrderName, OrderRowContainer, OrderRowDetail, OrderRowTitle, PaymentBody, PaymentContainer, PaymentDetail1, PaymentDetailContainer1, PaymentHeader, PaymentRow, PhoneRowContainer, PinkText, TotalBody, TotalHeader } from './style';
+import { DividerLine, EmailRowContainer, OrderAdd, OrderDetailBox, OrderDetailsContainer, OrderDetailsDate, OrderDetailsHeader, OrderDetailsTitle, OrderHeader, OrderName, OrderRowContainer, OrderRowDetail, OrderRowTitle, PaymentBody, PaymentContainer, PaymentDetail1, PaymentDetailContainer1, PaymentHeader, PaymentRow, PhoneRowContainer, PinkText, TotalBody, TotalHeader } from './style';
 
 const items = [
    {
@@ -60,7 +60,7 @@ return (
             <PinkText>Back to List</PinkText>
             </OrderDetailsHeader>
          </div>
-      <Divider></Divider>
+      <DividerLine></DividerLine>
       <div>
          <div style={{display: 'flex', padding: '24px 24px', gap: '24px' }}>
             <div style={{flex: 3}}>
@@ -70,7 +70,7 @@ return (
                   <OrderDetailsContainer>
                         <div style={{height: 'fit-content'}}>
                            <OrderHeader>Billing Address</OrderHeader>
-                           <Divider></Divider>
+                           <DividerLine></DividerLine>
                            <OrderName>Dainne Russell</OrderName>
                            <OrderAdd>4140 Parker Rd. Allentown, New Mexico 31134</OrderAdd>
                            <EmailRowContainer>
@@ -86,7 +86,7 @@ return (
                         <div style={{width: '2px',height: '220px',backgroundColor: gray[100]}}></div>
                         <div style={{height: 'fit-content'}}>
                            <OrderHeader>Shipping Address</OrderHeader>
-                           <Divider></Divider>
+                           <DividerLine></DividerLine>
                            <OrderName>Dainne Russell</OrderName>
                            <OrderAdd>4140 Parker Rd. Allentown, New Mexico 31134</OrderAdd>
                            <EmailRowContainer>
@@ -114,23 +114,23 @@ return (
                      <PaymentDetail1>Paypal</PaymentDetail1>
                   </PaymentDetailContainer1>
                </div>
-               <Divider></Divider>
+               <DividerLine></DividerLine>
                <div style={{padding: '18px 20px'}}>
                   <PaymentRow>
                      <PaymentHeader>Subtotal:</PaymentHeader>
                      <PaymentBody>$365.00</PaymentBody>
                   </PaymentRow>
-                  <Divider></Divider>
+                  <DividerLine></DividerLine>
                   <PaymentRow>
                      <PaymentHeader>Discount:</PaymentHeader>
                      <PaymentBody>20%</PaymentBody>
                   </PaymentRow>
-                  <Divider></Divider>
+                  <DividerLine></DividerLine>
                   <PaymentRow>
                      <PaymentHeader>Shipping:</PaymentHeader>
                      <PaymentBody>Free</PaymentBody>
                   </PaymentRow>
-                  <Divider></Divider>
+                  <DividerLine></DividerLine>
                   <PaymentRow>
                      <TotalHeader>Total</TotalHeader>
                      <TotalBody>$84.00</TotalBody>

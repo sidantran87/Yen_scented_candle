@@ -21,8 +21,6 @@ const SignUpPage = () => {
     navigate('/sign-in')
   }
 
-
-
   const [email, setMail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
