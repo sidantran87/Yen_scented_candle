@@ -1,5 +1,5 @@
 import React from 'react'
-import OrderProductCard from '../../components/OrderProductCard/OrderProductCard'
+import OrderProductCard from '../../components/OrderProductCard/OrderProductCard.jsx'
 
 const CartPage = () => {
   return (
@@ -9,6 +9,7 @@ const CartPage = () => {
         <div>
           <OrderProductCard/>
         </div>
+        
       </div>
     </div>
   )

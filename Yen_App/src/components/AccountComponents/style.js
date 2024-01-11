@@ -236,7 +236,7 @@ export const TotalBody = styled.div`
   font-weight: 600;
 `;
 
-export const Divider = styled.div`
+export const DividerLine = styled.div`
   width: 100%;
   height: 1px;
   background-color: ${gray[100]}
