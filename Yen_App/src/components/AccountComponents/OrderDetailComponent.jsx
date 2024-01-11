@@ -1,7 +1,7 @@
 import { Steps, Table, Tag } from 'antd'
 import React from 'react'
 import { success } from '../../color';
-import { OrderAdd, OrderDetailsContainer, OrderDetailsDate, OrderDetailsHeader, OrderDetailsTitle, OrderHeader, OrderName, OrderRowContainer, OrderRowDetail, OrderRowTitle, PaymentContainer, PhoneRowContainer, PinkText } from './style';
+import { EmailRowContainer, OrderAdd, OrderDetailsContainer, OrderDetailsDate, OrderDetailsHeader, OrderDetailsTitle, OrderHeader, OrderName, OrderRowContainer, OrderRowDetail, OrderRowTitle, PaymentBody, PaymentContainer, PaymentDetail1, PaymentDetailContainer1, PaymentHeader, PaymentRow, PhoneRowContainer, PinkText, TotalBody, TotalHeader } from './style';
 
 const items = [
    {
@@ -76,25 +76,25 @@ return (
                            <hr />
                            <OrderName>Dainne Russell</OrderName>
                            <OrderAdd>4140 Parker Rd. Allentown, New Mexico 31134</OrderAdd>
-                           <OrderRowContainer>
+                           <EmailRowContainer>
                               <OrderRowTitle>Email</OrderRowTitle>
                               <OrderRowDetail>dainne.ressell@gmail.com</OrderRowDetail>
-                           </OrderRowContainer>
+                           </EmailRowContainer>
                            <PhoneRowContainer>
                                  <OrderRowTitle>Phone</OrderRowTitle>
                                  <OrderRowDetail>(671) 555-0110</OrderRowDetail>
                            </PhoneRowContainer>
                         </div>
-                        <div style={{width: '1px', height: '180px', border: '1px #E6E6E6 solid'}}></div>
+                        <div style={{width: '1px', height: '220px', border: '1px #E6E6E6 solid'}}></div>
                         <div style={{height: 'fit-content'}}>
                            <OrderHeader>Shipping Address</OrderHeader>
                            <hr />
                            <OrderName>Dainne Russell</OrderName>
                            <OrderAdd>4140 Parker Rd. Allentown, New Mexico 31134</OrderAdd>
-                           <OrderRowContainer>
+                           <EmailRowContainer>
                               <OrderRowTitle>Email</OrderRowTitle>
                               <OrderRowDetail>dainne.ressell@gmail.com</OrderRowDetail>
-                           </OrderRowContainer>
+                           </EmailRowContainer>
                            <PhoneRowContainer>
                                  <OrderRowTitle>Phone</OrderRowTitle>
                                  <OrderRowDetail>(671) 555-0110</OrderRowDetail>
@@ -106,37 +106,37 @@ return (
 
             <PaymentContainer>
                <div style={{display: 'flex', gap: '20px', padding: '18px 20px'}}>
-                  <div style={{display: 'flex', flexDirection: 'column', gap: '6px'}}>
+                  <PaymentDetailContainer1>
                      <OrderRowTitle>Order ID:</OrderRowTitle>
-                     <div style={{color: '#1A1A1A', fontSize: 14, fontFamily: 'Poppins', fontWeight: '400'}}>#4152</div>
-                  </div>
+                     <PaymentDetail1>#4152</PaymentDetail1>
+                  </PaymentDetailContainer1>
                   <div style={{width: '1px', height: '30px', border: '1px #E6E6E6 solid'}}></div>
-                  <div style={{display: 'flex', flexDirection: 'column', gap: '6px'}}>
+                  <PaymentDetailContainer1>
                      <OrderRowTitle>Payment Method:</OrderRowTitle>
-                     <div style={{color: '#1A1A1A', fontSize: 14, fontFamily: 'Poppins', fontWeight: '400'}}>Paypal</div>
-                  </div>
+                     <PaymentDetail1>Paypal</PaymentDetail1>
+                  </PaymentDetailContainer1>
                </div>
                <hr />
                <div style={{padding: '18px 20px'}}>
-                  <div style={{display:'flex', justifyContent: 'space-between', padding: '12px 0'}}>
-                     <div style={{color: '#666666', fontSize: 14, fontFamily: 'Poppins', fontWeight: '400'}}>Subtotal:</div>
-                     <div style={{color: '#1A1A1A', fontSize: 14, fontFamily: 'Poppins', fontWeight: '500'}}>$365.00</div>
-                  </div>
+                  <PaymentRow>
+                     <PaymentHeader>Subtotal:</PaymentHeader>
+                     <PaymentBody>$365.00</PaymentBody>
+                  </PaymentRow>
                   <hr />
-                  <div style={{display:'flex', justifyContent: 'space-between', padding: '12px 0'}}>
-                     <div style={{color: '#666666', fontSize: 14, fontFamily: 'Poppins', fontWeight: '400'}}>Discount:</div>
-                     <div style={{color: '#1A1A1A', fontSize: 14, fontFamily: 'Poppins', fontWeight: '500'}}>20%</div>
-                  </div>
+                  <PaymentRow>
+                     <PaymentHeader>Discount:</PaymentHeader>
+                     <PaymentBody>20%</PaymentBody>
+                  </PaymentRow>
                   <hr />
-                  <div style={{display:'flex', justifyContent: 'space-between', padding: '12px 0'}}>
-                     <div style={{color: '#666666', fontSize: 14, fontFamily: 'Poppins', fontWeight: '400'}}>Shipping:</div>
-                     <div style={{color: '#1A1A1A', fontSize: 14, fontFamily: 'Poppins', fontWeight: '500'}}>Free</div>
-                  </div>
+                  <PaymentRow>
+                     <PaymentHeader>Shipping:</PaymentHeader>
+                     <PaymentBody>Free</PaymentBody>
+                  </PaymentRow>
                   <hr />
-                  <div style={{display:'flex', justifyContent: 'space-between', padding: '12px 0'}}>
-                     <div style={{color: '#1A1A1A', fontSize: 18, fontFamily: 'Poppins', fontWeight: '400'}}>Total</div>
-                     <div style={{color: '#742C57', fontSize: 18, fontFamily: 'Poppins', fontWeight: '600'}}>$84.00</div>
-                  </div>
+                  <PaymentRow>
+                     <TotalHeader>Total</TotalHeader>
+                     <TotalBody>$84.00</TotalBody>
+                  </PaymentRow>
                </div>
             </PaymentContainer>
          </div>
