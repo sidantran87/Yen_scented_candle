@@ -1,22 +1,24 @@
 import React, { useEffect, useState } from 'react'
-import {Col, Button, Badge} from 'antd'
+import {Col, Button, Badge, Popover} from 'antd'
 import { WrapperHeader, LogoText, WrapperAccount, LogoTitle, Wrapperleft } from './style'
 import SearchButton from '../SearchButtonComponent/SearchButton';
 import {success} from '../../color.js'
-import {cartIcon} from '../../components/IconComponent/IconComponent.jsx'
+import {cartIcon, userIcon} from '../../components/IconComponent/IconComponent.jsx'
 import { WrapperTypeProduct } from '../../pages/Homepage/style.js';
 import TypeProduct from '../TypeProduct/TypeProduct.jsx';
 import { useLocation, useNavigate } from 'react-router-dom';
 import logo from '../../assets/ico/logo.png'
 import {useSelector, useDispatch} from 'react-redux'
 import * as UserService from '../../services/UserService'
+import { resetUser } from '../../redux/slides/userSlide'
+import { searchProduct } from '../../redux/slides/productSlide';
 
 const HeaderComponent = ({ isHiddenSearch = false, isHiddenCart = false }) => {
-   const arr =['home', "product", "about us", "Account"]
    const location = useLocation();
    const [currentPage, setCurrentPage] = useState('');
+   const dispatch = useDispatch()
    const user = useSelector((state) => state.user)
-   const [usernName, setUserName] = useState('')
+   const [userName, setUserName] = useState('')
    const [userAvatar, setUserAvatar] = useState('')
    const [search,setSearch] = useState('')
    const [isOpenPopup, setIsOpenPopup] = useState(false)
@@ -31,8 +33,8 @@ const HeaderComponent = ({ isHiddenSearch = false, isHiddenCart = false }) => {
 
    const handleLogout = async () => {
       await UserService.logoutUser()
-      // dispatch(resetUser())
-   }
+      dispatch(resetUser())
+    }
 
    useEffect(() => {
       setUserName(user?.name)
@@ -41,7 +43,7 @@ const HeaderComponent = ({ isHiddenSearch = false, isHiddenCart = false }) => {
 
    const content = (
       <div>
-         <div>Dashboard</div>
+         <div onClick={() => handleClickNavigate('profile')}>Dashboard</div>
          {user?.isAdmin && (
             <div>System Management</div>
          )}
@@ -49,9 +51,32 @@ const HeaderComponent = ({ isHiddenSearch = false, isHiddenCart = false }) => {
          <div>Log-out</div>
       </div>
    )
+
+   const handleClickNavigate = (type) => {
+      if(type === 'profile') {
+        navigate('/my-account')
+      }else if(type === 'admin') {
+        navigate('/system/admin')
+      }else if(type === 'my-order') {
+        navigate('/my-account',{ state : {
+            id: user?.id,
+            token : user?.access_token
+          }
+        })
+      }else {
+        handleLogout()
+      }
+      setIsOpenPopup(false)
+    }
+
+    const onSearch = (e) => {
+      setSearch(e.target.value)
+      dispatch(searchProduct(e.target.value))
+    }
+
    return (
       <div style={{width: '100%', position: 'relative'}}>
-         <WrapperHeader>
+         <WrapperHeader >
             <Col span={6}>
                <LogoTitle onClick={() => handleOnClick('')}>
                   <img style={{height: '50px', width: 'auto'}} src={logo} alt="" />
@@ -64,16 +89,23 @@ const HeaderComponent = ({ isHiddenSearch = false, isHiddenCart = false }) => {
             <Col span={6}>
             <Wrapperleft>
                {userAvatar ? (
-                  <img src={userAvatar} alt="" />
-               ): (
-                  <div></div>
-               )}
+                  <img src={userAvatar} alt="avatar" style={{
+                  height: '30px',
+                  width: '30px',
+                  borderRadius: '50%',
+                  objectFit: 'cover'
+                  }}/>
+               ): 
+                  (
+                     <div>{userIcon}</div>
+                  )
+               }
 
                {user?.access_token ? (
                   <>
-                     <div>
-                        <div></div>
-                     </div>
+                     <Popover content={content} trigger="click" open={isOpenPopup}>
+                        <div style={{ cursor: 'pointer',maxWidth: 200, padding: '20px 0', overflow: 'hidden', textOverflow: 'ellipsis' }} onClick={() => setIsOpenPopup((prev) => !prev)}>{userName?.length ? userName : user?.email}</div>
+                     </Popover>
                   </>
                ): (
                   <WrapperAccount >
