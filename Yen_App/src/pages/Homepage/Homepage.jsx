@@ -69,7 +69,7 @@ function Homepage() {
                   })}
                </CardContainer>
                {/* Load more button */}
-               <div style={{ paddingTop: '32px' }}>
+               <div style={{ padding: '32px' }}>
                   <ButtonComponent size='large' labelButton="Load More" style={{ background: success.default, color: white, fontFamily: 'Poppins', fontSize: '16', fontWeight: '600', borderRadius: '30px', width: '200px' }} />
                </div>
             </div>
@@ -87,7 +87,7 @@ function Homepage() {
          content="Yen Candle offers a diverse range of products, including scented candles, decorative candles, religious candles, LED-electronic candles, insect repellent candles, and high-end accessories. Specializing in interior decoration, garden, wedding parties, and meaningful gifts, Yen's products cater to various occasions and preferences."
       />
                
-               <ButtonComponent size='large' labelButton="Load More" style={{ background: success.default, color: white, fontFamily: 'Poppins', fontSize: '16', fontWeight: '600', borderRadius: '30px', width: '200px' }} />
+               <ButtonComponent size='large' labelButton="Load More" style={{ background: success.default, color: white, fontFamily: 'Poppins', fontSize: '16', fontWeight: '600', borderRadius: '30px', width: '200px', margin: '-68px 0' }} />
             </AboutContainer>
          </div>
 

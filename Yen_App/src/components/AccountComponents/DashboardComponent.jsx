@@ -1,9 +1,18 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Avatar, Table, Tag } from 'antd';
 import { gray } from '../../color';
 import { AddressContainer, AddressDetails, BillingTitle, EditAddressLink, EditProfileLink, FlexContainer, OrderHistoryHeader, OrderHistoryTitle, PinkText, ProfileContainer, ProfileDetails, RecentOrderHistoryContainer, ViewAllLink } from './style';
+import * as UserService from '../../services/UserService'
+import { resetUser } from '../../redux/slides/userSlide'
+import { useDispatch, useSelector } from 'react-redux';
+import { updateUser } from '../../redux/slides/userSlide'
+import { useMutationHooks } from '../../hooks/useMutationHook'
+import * as message from '../../components/Message/Message'
 
+import { getBase64 } from '../../utils'
 const { Column } = Table;
+
+
 
 
 const data = [
@@ -32,8 +41,78 @@ const data = [
 
 
 const DashboardComponent = ({onViewDetails}) => {
+
+
+   const user = useSelector((state) => state.user)
+      const [email, setEmail] = useState('')
+      const [name, setName] = useState('')
+      const [phone, setPhone] = useState('')
+      const [address, setAddress] = useState('')
+      const [avatar, setAvatar] = useState('')
+      const mutation = useMutationHooks(
+         (data) => {
+               const { id, access_token, ...rests } = data
+               UserService.updateUser(id, rests, access_token)
+         }
+      )
+
+      const dispatch = useDispatch()
+      const { data, isSuccess, isError } = mutation
+
+      useEffect(() => {
+         setEmail(user?.email)
+         setName(user?.name)
+         setPhone(user?.phone)
+         setAddress(user?.address)
+         setAvatar(user?.avatar)
+      }, [user])
+
+      const handleGetDetailsUser = async (id, token) => {
+         const res = await UserService.getDetailsUser(id, token)
+         dispatch(updateUser({ ...res?.data, access_token: token }))
+         console.log('data: ', res)
+      }
+
+      
+
+      useEffect(() => {
+         if (isSuccess) {
+               message.success()
+               handleGetDetailsUser(user?.id, user?.access_token)
+         } else if (isError) {
+               message.error()
+         }
+      }, [isSuccess, isError])
+
+
+      const handleOnchangeEmail = (value) => {
+            setEmail(value)
+      }
+      const handleOnchangeName = (value) => {
+            setName(value)
+      }
+      const handleOnchangePhone = (value) => {
+            setPhone(value)
+      }
+      const handleOnchangeAddress = (value) => {
+            setAddress(value)
+      }
+
+      const handleOnchangeAvatar = async ({fileList}) => {
+            const file = fileList[0]
+            if (!file.url && !file.preview) {
+               file.preview = await getBase64(file.originFileObj );
+            }
+            setAvatar(file.preview)
+      }
+
+      const handleUpdate = () => {
+            mutation.mutate({ id: user?.id, email, name, phone, address, avatar, access_token: user?.access_token })
+
+      }
+
    const handleViewDetails = () => {
-      onViewDetails();
+         onViewDetails();
     };
    return (
       <div>

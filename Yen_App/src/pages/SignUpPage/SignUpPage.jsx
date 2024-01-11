@@ -14,21 +14,31 @@ import * as Message from '../../components/Message/Message'
 
 import { useMutation } from '@tanstack/react-query'
 
+import { useSelector } from 'react-redux'
+
 const SignUpPage = () => {
+
 
   const navigate = useNavigate()
   const handleSignInCLick = () => {
     navigate('/sign-in')
   }
 
+  const [name, setName] = useState('');
+  const [phone, setPhone] = useState('');
   const [email, setMail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [acceptBox, setAcceptBox] = useState('')
 
   const handleOnChangeEmail = (value) => {
-  setMail(value)
-  // console.log('e', e.target.value)
+    setMail(value)
+  }
+  const handleOnchangeFullName = (value) => {
+    setName(value)
+  }
+  const handleOnchangePhone = (value) => {
+    setPhone(value)
   }
 
   const handleOnchangePassword = (value) => {
@@ -47,7 +57,7 @@ const SignUpPage = () => {
     data => UserService.signupUser(data)
   )
 
-  const { data, isLoading, isSuccess, isError } = mutation
+  const { data, isSuccess, isError } = mutation
 
   useEffect(() => {
     if (isSuccess) {
@@ -59,7 +69,7 @@ const SignUpPage = () => {
   }, [isSuccess, isError])
 
   const handleSignUp = () => {
-  mutation.mutate({ email, password, confirmPassword })
+  mutation.mutate({name, email, password, confirmPassword })
   }
 
   return (
@@ -70,6 +80,8 @@ const SignUpPage = () => {
             <LoginTitle>Create Account</LoginTitle>
             <Field>
               <FieldInput>
+                <InputFormComponent placeholder='Full Name' value={name} OnChange={handleOnchangeFullName} />
+                <InputFormComponent placeholder='Phone Number' value={phone} OnChange={handleOnchangePhone} />
                 <InputFormComponent placeholder='Email' password={false} value={email} OnChange={handleOnChangeEmail} />
                 <InputFormComponent placeholder='Password' password={true} value={password} OnChange={handleOnchangePassword} />
                 <InputFormComponent placeholder='Confirm Password' password={true} value={confirmPassword} OnChange={handleOnchangeConfirmPassword} />
@@ -81,7 +93,7 @@ const SignUpPage = () => {
               </LinkField>
             </Field>
             {/* <Loading> */}
-            <LoginBtn disabled={!email.length ||  !password.length || !confirmPassword.length || !acceptBox}  onClick={handleSignUp} size='large'type='primary'>Create Account</LoginBtn>
+            <LoginBtn disabled={!email.length ||  !password.length || !confirmPassword.length ||!name.length || !acceptBox}  onClick={handleSignUp} size='large'type='primary'>Create Account</LoginBtn>
             {/* </Loading> */}
             <SignupLink>
               <NormalText>Already have account</NormalText>

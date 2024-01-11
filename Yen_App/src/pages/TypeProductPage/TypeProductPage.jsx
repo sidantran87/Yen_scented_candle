@@ -18,7 +18,7 @@ function TypeProductPage(props) {
    console.log('data', products)
    const newPrice = price * (1 - discount/100);
    return (
-      <div  id='container' style={{background: '#efefef', padding: '0 60px', height:'3000px',display:'flex', flexDirection: 'column', alignItems:'center'}}>
+      <div  id='container' style={{padding: '0 60px', height:'fit-content',display:'flex', flexDirection: 'column', alignItems:'center'}}>
          <Row style={{flexWrap:'nowrap', paddingTop: '34px'}}>
             <WrapperNavbar span={4}>
                <NavbarComponent/>
@@ -41,7 +41,7 @@ function TypeProductPage(props) {
                      )
                   })}
                </CardContainer>
-               <Pagination defaultCurrent={1} total={50} style={{textAlign: 'center'}}/>
+               <Pagination defaultCurrent={1} total={50} style={{textAlign: 'center', paddingTop: '100px'}}/>
             </Col>
          </Row>
          

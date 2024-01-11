@@ -1,4 +1,4 @@
-   import { Button, Table } from 'antd'
+   import { Button, Checkbox, Table } from 'antd'
    import React from 'react'
    import { DividerLine, OrderRowTitle, PaymentBody, PaymentContainer, PaymentDetail1, PaymentDetailContainer1, PaymentHeader, PaymentRow, TotalBody, TotalHeader } from '../AccountComponents/style';
    import { xIcon } from '../IconComponent/IconComponent';
@@ -71,6 +71,7 @@
             <Table pagination={false}  dataSource={data}>
                <Column title={'Product'} dataIndex="name" key="name" render={(text, record) => (
                <div style={{display: 'flex', alignItems: 'center', gap: '12px'}}>
+                  <Checkbox></Checkbox>
                   <img style={{width: '70px', height:'70px', objectFit: 'contain'}} src="https://scontent.fsgn2-9.fna.fbcdn.net/v/t39.30808-6/327145663_912477443085208_5657223133568033444_n.png?_nc_cat=103&ccb=1-7&_nc_sid=efb6e6&_nc_eui2=AeE2gbMASK_yco_UmybNHipyFyXNC0bAOw8XJc0LRsA7D2PzncJhC4-v4VjEcaZFafGDp2ZiSLJlQxTlv0iEAygh&_nc_ohc=j9PvM2hh1OEAX_D1Fcg&_nc_ht=scontent.fsgn2-9.fna&oh=00_AfCSs_jGhlCG8Z14IL-FReXE0QBT3h46IsuPZVL15pJ7Uw&oe=65A48C74" alt="" />
                   <div>{record.name}</div>
                </div>

@@ -5,7 +5,7 @@ const { genneralAccessToken, genneralRefreshToken } = require("./JwtService");
 // Tạo người dùng mới
 const createUser = (newUser) => {
   return new Promise(async (resolve, reject) => {
-    const { email, password, confirmPassword } = newUser;
+    const {name, email, password, confirmPassword } = newUser;
     try {
       // Kiểm tra xem người dùng đã tồn tại chưa
       const checkUser = await User.findOne({
@@ -20,6 +20,7 @@ const createUser = (newUser) => {
       // Mã hóa mật khẩu và tạo người dùng mới
       const hash = bcrypt.hashSync(password, 10);
       const createdUser = await User.create({
+        name,
         email,
         password: hash,
       });

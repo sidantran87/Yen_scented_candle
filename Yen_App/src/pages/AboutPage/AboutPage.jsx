@@ -6,7 +6,7 @@ import About3 from "../../assets/img/About3.png";
 const AboutPage = () => {
 return (
    <>
-      <div>
+      <div style={{paddingTop: '60px'}}>
       <AboutCardComponent
          img={About1}
          header="A Pioneer in Candle Craftsmanship"

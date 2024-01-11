@@ -4,12 +4,12 @@ const JwtService = require("../services/JwtService");
 // Tạo một user mới
 const createUser = async (req, res) => {
   try {
-    const {  email, password, confirmPassword } = req.body;
+    const { name,  email, password, confirmPassword } = req.body;
     const reg = /^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
     const isCheckEmail = reg.test(email);
 
     // Kiểm tra input
-    if (!email || !password || !confirmPassword) {
+    if (!name ||!email || !password || !confirmPassword) {
       return res.status(200).json({
         status: "ERR",
         message: "The input is required",

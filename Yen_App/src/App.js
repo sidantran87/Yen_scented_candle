@@ -7,14 +7,6 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 
 function App() {
-  const fetchApi = async () => {
-    const res = await axios.get("http://localhost:3888/api/user")
-    return res.data
-  }
-
-  const query = useQuery({ queryKey: ['todos'], queryFn: fetchApi });
-
-  console.log('query', query);
 
   return (
     <div style={{ overflowX: 'hidden', height: '100vh', width: '100%' }}>
