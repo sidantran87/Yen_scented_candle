@@ -50,5 +50,6 @@
   },
   "resolutions": {
     "styled-components": "^5"
-  }
+  },
+  "proxy": "https://yen-scented-candle-server.onrender.com"
 }
