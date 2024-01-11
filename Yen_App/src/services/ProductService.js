@@ -116,7 +116,7 @@ const getDetailsProduct = async (productId) => {
     return response.data;
   } catch (error) {
     console.error(
-      "When getting the datail of product, an errorr occured: ",
+      "When getting the details of product, an errorr occured: ",
       error
     );
     throw error;

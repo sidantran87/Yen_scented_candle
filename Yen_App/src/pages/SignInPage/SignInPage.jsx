@@ -16,7 +16,6 @@ import { jwtDecode as jwt_decode } from "jwt-decode";
 
 
 
-
 const SignInPage = () => {
   const [email, setMail] = useState('');
   const [password, setPassword] = useState('');
