@@ -23,14 +23,20 @@ const [selectedNavItem, setSelectedNavItem] = useState('dashboard');
 const [currentPage, setCurrentPage] = useState('');
 
 const renderContent = () => {
-   switch (selectedNavItem) {
-      case 'dashboard':
-         return <DashboardComponent/>;
-      case 'orderHistory':
-         return <OrderComponent/>
-      default:
-         return <DashboardComponent/>;
-   }
+switch (selectedNavItem) {
+   case 'dashboard':
+      return <DashboardComponent onViewDetails={handleViewDetails}/>;
+   case 'orderHistory':
+      return <OrderComponent onViewDetails={handleViewDetails} />;
+   case 'orderDetail':
+      return <OrderDetailComponent />;
+   default:
+      return <DashboardComponent />;
+}
+};
+
+const handleViewDetails = () => {
+setSelectedNavItem('orderDetail');
 };
 
 return (
@@ -47,7 +53,7 @@ return (
 
    <ContentContainer>
       {renderContent()}
-      <OrderDetailComponent/>
+      {/* <OrderDetailComponent/> */}
    </ContentContainer>
    </Container>
       

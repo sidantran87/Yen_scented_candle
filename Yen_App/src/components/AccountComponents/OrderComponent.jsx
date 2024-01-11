@@ -31,7 +31,10 @@ const data = [
 ];
 
 
-const OrderComponent = () => {
+const OrderComponent = ({onViewDetails }) => {
+   const handleViewDetails = () => {
+      onViewDetails();
+    };
    return (
       <div>
       <RecentOrderHistoryContainer>
@@ -48,7 +51,7 @@ const OrderComponent = () => {
                   <div>${record.total} ({record.quantity} Products)</div>
                } />
                <Column title={'Status'} dataIndex="status" key="status"/>
-               <Column title={''} dataIndex="tags" key="tags" render={() => <div style={{ cursor: 'pointer', color: '#B2006B', fontSize: 14, fontFamily: 'Poppins', fontWeight: '500'}} >View Details</div>} />
+               <Column title={''} dataIndex="tags" key="tags" render={() => <div style={{ cursor: 'pointer', color: '#B2006B', fontSize: 14, fontFamily: 'Poppins', fontWeight: '500'}} onClick={handleViewDetails}>View Details</div>} />
             </Table>
       </RecentOrderHistoryContainer>
       </div>

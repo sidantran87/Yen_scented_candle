@@ -82,7 +82,7 @@ import { gray, success } from '../../color';
    `;
 
    export const OrderHistoryTitle = styled.div`
-   color: ${success.default};
+   color: ${gray[900]};
    font-size: 20px;
    font-weight: 500;
    `;
