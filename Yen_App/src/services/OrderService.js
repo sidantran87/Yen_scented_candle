@@ -1,4 +1,5 @@
-import { axiosJWT } from "./UserService"
+// import { axios } from "./UserService"
+import {axios} from "./axios"
 
 // export const createProduct = async (data) => {
 //   const res = await axios.post(`/product/create`, data)
@@ -8,7 +9,7 @@ import { axiosJWT } from "./UserService"
 
 // Create new order
 export const createOrder = async (data,access_token) => {
-  const res = await axiosJWT.post(`/order/create/${data.user}`, data, {
+  const res = await axios.post(`/order/create/${data.user}`, data, {
       headers: {
           token: `Bearer ${access_token}`,
       }
@@ -19,7 +20,7 @@ export const createOrder = async (data,access_token) => {
 
 // Create
 export const getOrderByUserId = async (id,access_token) => {
-  const res = await axiosJWT.get(`/order/get-all-order/${id}`, {
+  const res = await axios.get(`/order/get-all-order/${id}`, {
       headers: {
           token: `Bearer ${access_token}`,
       }
@@ -28,7 +29,7 @@ export const getOrderByUserId = async (id,access_token) => {
 }
 
 export const getDetailsOrder = async (id,access_token) => {
-  const res = await axiosJWT.get(`/order/get-details-order/${id}`, {
+  const res = await axios.get(`/order/get-details-order/${id}`, {
       headers: {
           token: `Bearer ${access_token}`,
       }
@@ -38,7 +39,7 @@ export const getDetailsOrder = async (id,access_token) => {
 
 export const cancelOrder = async (id, access_token, orderItems, userId ) => {
   const data = {orderItems, orderId: id}
-  const res = await axiosJWT.delete(`/order/cancel-order/${userId}`, {data}, {
+  const res = await axios.delete(`/order/cancel-order/${userId}`, {data}, {
       headers: {
           token: `Bearer ${access_token}`,
       }
@@ -47,7 +48,7 @@ export const cancelOrder = async (id, access_token, orderItems, userId ) => {
 }
 
 export const getAllOrder = async (access_token) => {
-  const res = await axiosJWT.get(`/order/get-all-order`, {
+  const res = await axios.get(`/order/get-all-order`, {
       headers: {
           token: `Bearer ${access_token}`,
       }
