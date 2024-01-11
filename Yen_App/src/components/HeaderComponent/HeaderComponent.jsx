@@ -112,7 +112,7 @@ const HeaderComponent = ({ isHiddenSearch = false, isHiddenCart = false }) => {
                            trigger="hover"
                            visible={isOpenPopup}
                            onVisibleChange={handlePopoverVisibleChange}>
-                        <div style={{ cursor: 'pointer',maxWidth: 200, padding: '20px 30px 20px 4px', overflow: 'hidden', textOverflow: 'ellipsis' }} onClick={() => setIsOpenPopup((prev) => !prev)}>{userName?.length ? userName : user?.email}</div>
+                        <div style={{ cursor: 'pointer',maxWidth: 200, padding: '20px 30px 20px 6px', overflow: 'hidden', textOverflow: 'ellipsis' }} onClick={() => setIsOpenPopup((prev) => !prev)}>{userName?.length ? userName : user?.email}</div>
                      </Popover>
                   </>
                ): (
