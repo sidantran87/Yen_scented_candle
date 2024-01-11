@@ -8,28 +8,25 @@ const { Column } = Table;
 
 const data = [
    {
-      key: '1',
-      firstName: 'John',
-      lastName: 'Brown',
-      age: 32,
-      address: 'New York No. 1 Lake Park',
-      tags: ['nice', 'developer'],
+      orderID: 3933,
+      date: '4 April, 2021',
+      total: '135',
+      quantity: 5,
+      status: 'Processing',
    },
    {
-      key: '2',
-      firstName: 'Jim',
-      lastName: 'Green',
-      age: 42,
-      address: 'London No. 1 Lake Park',
-      tags: ['loser'],
+      orderID: 3933,
+      date: '4 April, 2021',
+      total: '25',
+      quantity: 2,
+      status: 'On the way',
    },
    {
-      key: '3',
-      firstName: 'Joe',
-      lastName: 'Black',
-      age: 32,
-      address: 'Sydney No. 1 Lake Park',
-      tags: ['cool', 'teacher'],
+      orderID: 3933,
+      date: '4 April, 2021',
+      total: '250',
+      quantity: 4,
+      status: 'Completed',
    },
 ];
 
@@ -42,12 +39,16 @@ const OrderComponent = () => {
             <OrderHistoryTitle>Recent Order History</OrderHistoryTitle>
             <ViewAllLink>View All</ViewAllLink>
          </OrderHistoryHeader>
-            <Table  dataSource={data}>
-               <Column title={'OrderID'} dataIndex="key" key="key" />
-               <Column title={'Date'} dataIndex="age" key="age" />
-               <Column title={'Total'} dataIndex="address" key="address" />
-               <Column title={'Status'} dataIndex="tags" key="tags" render={(tags) => <Tag>{tags[0]}</Tag>} />
-               <Column title={''} dataIndex="tags" key="tags" render={() => <div style={{color: '#B2006B', fontSize: 14, fontFamily: 'Poppins', fontWeight: '500'}} >View Details</div>} />
+            <Table style={{padding: '0 24px'}}  dataSource={data}>
+               <Column title={'OrderID'} dataIndex="orderID" key="orderID" render = {(text, record) => 
+                  <div>#{record.orderID}</div>
+               } />
+               <Column title={'Date'} dataIndex="date" key="date" />
+               <Column title={'Total'} dataIndex="total" key="total" render ={(text, record) => 
+                  <div>${record.total} ({record.quantity} Products)</div>
+               } />
+               <Column title={'Status'} dataIndex="status" key="status"/>
+               <Column title={''} dataIndex="tags" key="tags" render={() => <div style={{ cursor: 'pointer', color: '#B2006B', fontSize: 14, fontFamily: 'Poppins', fontWeight: '500'}} >View Details</div>} />
             </Table>
       </RecentOrderHistoryContainer>
       </div>
