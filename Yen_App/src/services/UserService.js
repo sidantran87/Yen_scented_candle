@@ -1,14 +1,19 @@
-import axios from "axios"
+import axios from "./axios"
 
 export const axiosJWT = axios.create()
 
 export const loginUser = async (data) => {
-    const res = await axios.post(`${process.env.REACT_APP_API_URL}/user/sign-in`, data)
-    return res.data
+    try {
+        const res = await axios.post("/user/sign-in", data)
+        return res.data
+    } catch (error) {
+        console.log("error", error)
+        throw (error)
+    }
 }
 
 export const signupUser = async (data) => {
-    const res = await axios.post(`${process.env.REACT_APP_API_URL}/user/sign-up`, data)
+    const res = await axios.post("/user/sign-up", data)
     return res.data
 }
 
@@ -48,7 +53,7 @@ export const getAllUser = async (access_token) => {
 
 export const refreshToken = async (refreshToken) => {
     console.log('refreshToken', refreshToken)
-    const res = await axios.post(`${process.env.REACT_APP_API_URL}/user/refresh-token`, {} , {
+    const res = await axios.post(`${process.env.REACT_APP_API_URL}/user/refresh-token`, {}, {
         headers: {
             token: `Bearer ${refreshToken}`,
         }

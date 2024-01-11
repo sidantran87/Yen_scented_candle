@@ -3,7 +3,7 @@ import axios from "./axios";
 // create a product
 const createProduct = async (productData) => {
   try {
-    const response = await axios.post("/create", productData);
+    const response = await axios.post("/product/create", productData);
     return response.data;
   } catch (error) {
     console.error("Creating product error: ", error);
@@ -16,7 +16,7 @@ const createProduct = async (productData) => {
 const updateProduct = async (productId, access_token, productData) => {
   try {
     const response = await axios.put(
-      `/update/${productId}`,
+      `/product/update/${productId}`,
       {
         headers: {
           token: `Bearer ${access_token}`,
@@ -35,7 +35,7 @@ const updateProduct = async (productId, access_token, productData) => {
 
 const deleteProduct = async (productId, access_token) => {
   try {
-    const response = await axios.delete(`/delete/${productId}`, {
+    const response = await axios.delete(`/product/delete/${productId}`, {
       headers: {
         token: `Bearer ${access_token}`,
       },
@@ -51,7 +51,7 @@ const deleteProduct = async (productId, access_token) => {
 
 const deleteManyProduct = async (productIds, access_token) => {
   try {
-    const response = await axios.post(`/delete-all/${productIds}`, {
+    const response = await axios.post(`/product/delete-all/${productIds}`, {
       headers: {
         token: `Bearer ${access_token}`,
       },
@@ -70,7 +70,7 @@ const getAllProduct = async (search, limit) => {
 
   try {
     const filterQuery = search ? `&filter=name&filter=${search}` : "";
-    const response = await axios.get(`/get-all?limit=${limit}${filterQuery}`);
+    const response = await axios.get(`/product/get-all?limit=${limit}${filterQuery}`);
     if (response.status === 200) {
       return response.data;
     } else {
@@ -88,7 +88,7 @@ const getAllProduct = async (search, limit) => {
 const getProductType = async (type, page, limit) => {
   try {
     const response = await axios.get(
-      `/get-all?filter=type&filter=${type}&limit=${limit}&page=${page}`
+      `/product/get-all?filter=type&filter=${type}&limit=${limit}&page=${page}`
     );
     return response.data;
   } catch (error) {
@@ -100,7 +100,7 @@ const getProductType = async (type, page, limit) => {
 // get all productType
 const getAllProductType = async () => {
   try {
-    const response = await axios.get("/get-all-type");
+    const response = await axios.get("/product/get-all-type");
     return response.data;
   } catch (error) {
     console.error("Getting type of product got an error: ", error);
@@ -112,7 +112,7 @@ const getAllProductType = async () => {
 
 const getDetailsProduct = async (productId) => {
   try {
-    const response = await axios.get(`/get-detail/${productId}`);
+    const response = await axios.get(`/product/get-detail/${productId}`);
     return response.data;
   } catch (error) {
     console.error(

@@ -95,3 +95,99 @@ import { gray } from '../../color';
    font-family: 'Poppins';
    font-weight: 500;
    `;
+
+   export const PinkText = styled.div`
+   color: #B2006B;
+   font-size: 14px;
+   font-family: 'Poppins';
+   font-weight: 500;
+   `;
+   export const OrderDetailsContainer = styled.div`
+   height: fit-content;
+   border: 1px solid black;
+   border-radius: 8px;
+   padding: 20px;
+   gap: 20px;
+`;
+
+export const OrderDetailsHeader = styled.div`
+   display: flex;
+   justify-content: space-between;
+   padding: 16px 24px;
+`;
+
+export const OrderDetailsTitle = styled.div`
+   color: #1A1A1A;
+   font-size: 20px;
+   font-family: 'Poppins';
+   font-weight: 500;
+`;
+
+export const OrderDetailsDate = styled.div`
+   color: #4D4D4D;
+   font-size: 14px;
+   font-family: 'Poppins';
+   font-weight: 400;
+`;
+export const OrderHeader = styled.div`
+color: #999999;
+font-size: 14px;
+font-family: 'Poppins';
+font-weight: 500;
+text-transform: uppercase;
+padding: 0 0 18px;
+`;
+
+export const OrderName = styled.div`
+  color: #1A1A1A;
+  font-size: 16px;
+  font-family: 'Poppins';
+  font-weight: 400;
+  padding: 14px 0 8px;
+`;
+
+export const OrderAdd = styled.div`
+  color: #666666;
+  font-size: 14px;
+  font-family: 'Poppins';
+  font-weight: 400;
+`;
+export const OrderRowTitle = styled.div`
+  color: #999999;
+  font-size: 12px;
+  font-family: 'Poppins';
+  font-weight: 500;
+  text-transform: uppercase;
+`;
+export const OrderRowDetail = styled.div`
+  width: 282px;
+  color: #1A1A1A;
+  font-size: 14px;
+  font-family: 'Poppins';
+  font-weight: 400;
+`;
+
+export const EmailRowContainer = styled.div`
+  height: 100%;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 4px;
+  display: inline-flex;
+  padding: 36px 0 12px;
+`;
+
+export const PhoneRowContainer = styled.div`
+  height: 100%;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 4px;
+  display: inline-flex;
+`;
+
+export const PaymentContainer = styled.div`
+  border: 1px solid black;
+  border-radius: 8px;
+  flex: 1;
+`;

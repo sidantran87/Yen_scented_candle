@@ -1,7 +1,7 @@
 import React from 'react'
 import { Avatar, Table, Tag } from 'antd';
 import { gray } from '../../color';
-import { AddressContainer, AddressDetails, BillingTitle, EditAddressLink, EditProfileLink, FlexContainer, OrderHistoryHeader, OrderHistoryTitle, ProfileContainer, ProfileDetails, RecentOrderHistoryContainer, ViewAllLink } from './style';
+import { AddressContainer, AddressDetails, BillingTitle, EditAddressLink, EditProfileLink, FlexContainer, OrderHistoryHeader, OrderHistoryTitle, PinkText, ProfileContainer, ProfileDetails, RecentOrderHistoryContainer, ViewAllLink } from './style';
 
 const { Column } = Table;
 
@@ -69,7 +69,7 @@ const DashboardComponent = () => {
          <Column title={'Date'} dataIndex="age" key="age" />
          <Column title={'Total'} dataIndex="address" key="address" />
          <Column title={'Status'} dataIndex="tags" key="tags" render={(tags) => <Tag>{tags[0]}</Tag>} />
-         <Column title={''} dataIndex="tags" key="tags" render={() => <div style={{color: '#B2006B', fontSize: 14, fontFamily: 'Poppins', fontWeight: '500'}}>View Details</div>} />
+         <Column title={''} dataIndex="tags" key="tags" render={() => <PinkText>View Details</PinkText>} />
       </Table>
   </RecentOrderHistoryContainer>
       </div>
