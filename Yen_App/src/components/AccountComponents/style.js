@@ -103,6 +103,7 @@ import { gray } from '../../color';
    font-weight: 500;
    `;
    export const OrderDetailsContainer = styled.div`
+   display: flex;
    height: fit-content;
    border: 1px solid black;
    border-radius: 8px;
@@ -190,4 +191,47 @@ export const PaymentContainer = styled.div`
   border: 1px solid black;
   border-radius: 8px;
   flex: 1;
+`;
+
+export const PaymentDetail1 = styled.div`
+  color: #1A1A1A;
+  font-size: 14px;
+  font-family: 'Poppins';
+  font-weight: 400;
+`
+export const PaymentDetailContainer1 = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+`;
+
+export const PaymentRow = styled.div`
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 0;
+`
+export const PaymentHeader = styled.div`
+  color: #666666;
+  font-size: 14px;
+  font-family: 'Poppins';
+  font-weight: 400;
+`;
+export const PaymentBody = styled.div`
+  color: #1A1A1A;
+  font-size: 14px;
+  font-family: 'Poppins';
+  font-weight: 500;
+`;
+export const TotalHeader = styled.div`
+  color: #1A1A1A;
+  font-size: 18px;
+  font-family: 'Poppins';
+  font-weight: 400;
+`;
+
+export const TotalBody = styled.div`
+  color: #742C57;
+  font-size: 18px;
+  font-family: 'Poppins';
+  font-weight: 600;
 `;
