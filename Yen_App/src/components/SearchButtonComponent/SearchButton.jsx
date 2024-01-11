@@ -7,7 +7,7 @@ const SearchButton = (props) => {
    const {size, labelButton, backgroundButton=success, colorTextBtn= white, borderButton, borderSearch} = props
    return (
       <div style={{display: 'flex', fontFamily: 'Poppins'}}>
-            <InputComponent prefix={<SearchOutlined/>} size={size} style={{borderRadius: borderSearch, color: 'black' , fontFamily: 'Poppins'}}/>
+            <InputComponent prefix={<SearchOutlined/>} size={size} style={{borderRadius: borderSearch, color: 'black' , fontFamily: 'Poppins'}} {...props}/>
             <ButtonComponent style={{background:backgroundButton, color:colorTextBtn ,borderRadius: borderButton, fontFamily: 'Poppins'}} size={size} labelButton={labelButton}>{labelButton}</ButtonComponent>
       </div>
    )

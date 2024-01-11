@@ -1,26 +1,31 @@
 import React, { useEffect, useState } from 'react'
-import {Col, Button, Badge} from 'antd'
-import { WrapperHeader, LogoText, WrapperAccount, LogoTitle, Wrapperleft } from './style'
+import {Col, Button, Badge, Popover} from 'antd'
+import { WrapperHeader, LogoText, WrapperAccount, LogoTitle, Wrapperleft, LogOutBTN, PopBTN } from './style'
 import SearchButton from '../SearchButtonComponent/SearchButton';
-import {success} from '../../color.js'
-import {cartIcon} from '../../components/IconComponent/IconComponent.jsx'
+import {gray, success} from '../../color.js'
+import {cartIcon, userIcon} from '../../components/IconComponent/IconComponent.jsx'
 import { WrapperTypeProduct } from '../../pages/Homepage/style.js';
 import TypeProduct from '../TypeProduct/TypeProduct.jsx';
 import { useLocation, useNavigate } from 'react-router-dom';
 import logo from '../../assets/ico/logo.png'
 import {useSelector, useDispatch} from 'react-redux'
 import * as UserService from '../../services/UserService'
+import { resetUser } from '../../redux/slides/userSlide'
+import { searchProduct } from '../../redux/slides/productSlide';
 
 const HeaderComponent = ({ isHiddenSearch = false, isHiddenCart = false }) => {
-   const arr =['home', "product", "about us", "Account"]
-   const location = useLocation();
    const [currentPage, setCurrentPage] = useState('');
+   const dispatch = useDispatch()
    const user = useSelector((state) => state.user)
-   const [usernName, setUserName] = useState('')
+   const [userName, setUserName] = useState('')
    const [userAvatar, setUserAvatar] = useState('')
    const [search,setSearch] = useState('')
    const [isOpenPopup, setIsOpenPopup] = useState(false)
    const order = useSelector((state) => state.order)
+
+   const handlePopoverVisibleChange = (visible) => {
+      setIsOpenPopup(visible);
+   };
 
    const navigate = useNavigate();
 
@@ -31,8 +36,8 @@ const HeaderComponent = ({ isHiddenSearch = false, isHiddenCart = false }) => {
 
    const handleLogout = async () => {
       await UserService.logoutUser()
-      // dispatch(resetUser())
-   }
+      dispatch(resetUser())
+    }
 
    useEffect(() => {
       setUserName(user?.name)
@@ -40,18 +45,41 @@ const HeaderComponent = ({ isHiddenSearch = false, isHiddenCart = false }) => {
     }, [user?.name, user?.avatar])
 
    const content = (
-      <div>
-         <div>Dashboard</div>
+      <div style={{cursor:'pointer'}}>
+         <PopBTN onClick={() => handleClickNavigate('profile')}>Dashboard</PopBTN>
          {user?.isAdmin && (
-            <div>System Management</div>
+            <PopBTN>System Management</PopBTN>
          )}
-         <div>Order History</div>
-         <div>Log-out</div>
+         <PopBTN>Order History</PopBTN>
+         <LogOutBTN onClick={() => handleClickNavigate()}>Log-out</LogOutBTN>
       </div>
    )
+
+   const handleClickNavigate = (type) => {
+      if(type === 'profile') {
+        navigate('/my-account')
+      }else if(type === 'admin') {
+        navigate('/system/admin')
+      }else if(type === 'my-order') {
+        navigate('/my-account',{ state : {
+            id: user?.id,
+            token : user?.access_token
+          }
+        })
+      }else {
+        handleLogout()
+      }
+      setIsOpenPopup(false)
+    }
+
+    const onSearch = (e) => {
+      setSearch(e.target.value)
+      dispatch(searchProduct(e.target.value))
+    }
+
    return (
       <div style={{width: '100%', position: 'relative'}}>
-         <WrapperHeader>
+         <WrapperHeader >
             <Col span={6}>
                <LogoTitle onClick={() => handleOnClick('')}>
                   <img style={{height: '50px', width: 'auto'}} src={logo} alt="" />
@@ -59,21 +87,33 @@ const HeaderComponent = ({ isHiddenSearch = false, isHiddenCart = false }) => {
                </LogoTitle>
             </Col>
             <Col span={8}>
-               <SearchButton size="large" labelButton="Search" backgroundButton={success.default} borderButton="0px 6px 6px 0px" borderSearch= "6px 0px 0px 6px" />
+               <SearchButton size="large" labelButton="Search" backgroundButton={success.default} borderButton="0px 6px 6px 0px" borderSearch= "6px 0px 0px 6px" onChange={onSearch} />
             </Col>
-            <Col span={6}>
+            <Col span={8}>
             <Wrapperleft>
-               {userAvatar ? (
-                  <img src={userAvatar} alt="" />
-               ): (
-                  <div></div>
-               )}
+               
 
                {user?.access_token ? (
                   <>
-                     <div>
-                        <div></div>
-                     </div>
+                  {userAvatar ? (
+                  <img src={userAvatar} alt="avatar" style={{
+                  height: '30px',
+                  width: '30px',
+                  borderRadius: '50%',
+                  objectFit: 'cover'
+                  }}/>
+               ): 
+                  (
+                     <div style={{width:'26px'}}>{userIcon}</div>
+                  )
+               }
+                     <Popover 
+                           content={content}
+                           trigger="hover"
+                           visible={isOpenPopup}
+                           onVisibleChange={handlePopoverVisibleChange}>
+                        <div style={{ cursor: 'pointer',maxWidth: 200, padding: '20px 30px 20px 6px', overflow: 'hidden', textOverflow: 'ellipsis' }} onClick={() => setIsOpenPopup((prev) => !prev)}>{userName?.length ? userName : user?.email}</div>
+                     </Popover>
                   </>
                ): (
                   <WrapperAccount >
@@ -83,11 +123,17 @@ const HeaderComponent = ({ isHiddenSearch = false, isHiddenCart = false }) => {
                )}
 
                {!isHiddenCart && (
-                  <div onClick={() => handleOnClick('my-cart')} style={{cursor: 'pointer'}}>
+                  <div onClick={() => handleOnClick('my-cart')} style={{cursor: 'pointer', display: 'flex'}}>
                   {/* count={order.orderItems ? order.orderItems.length : 0} */}
-                     <Badge  color={success.dark} style={{fontFamily: 'Poppins'}}>
+                     <div onClick={() => handleOnClick('my-cart')} style={{margin: '0 16px'}}>
+                     <Badge count={order?.orderItems?.length}  color={success.dark} style={{fontFamily: 'Poppins'}}>
                         <div style={{width:'26px'}}>{cartIcon}</div>
                      </Badge>
+                     </div>
+                     <div>
+                        <div style={{color: gray[700], fontSize: '11px', fontWeight: '400'}}>Shopping Cart</div>
+                        <div style={{color: gray[900], fontSize: '14px', fontWeight: '500'}}>$57.00</div>
+                     </div>
                   </div>
                )}
             </Wrapperleft>
