@@ -35,6 +35,7 @@ export const success = {
 };
 
 export const warning = '#FF8A00';
+export const error = '#EA4B48';
 
 
 

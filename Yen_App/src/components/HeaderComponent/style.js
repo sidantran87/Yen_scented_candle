@@ -1,6 +1,6 @@
 import { Row, Col } from "antd";
 import styled from 'styled-components'
-import {success} from '../../color'
+import {success, error} from '../../color'
 export const WrapperHeader = styled(Row)`
    width: 100vw;
    padding: 24px 60px;
@@ -40,7 +40,7 @@ export const WrapperAccount = styled.div`
 export const Wrapperleft = styled(Col)`
    display:flex;
    justify-content: flex-end;
-   gap: 40px;
+   gap: px;
    align-items: center;
 `
 
@@ -61,5 +61,18 @@ export const WrapperMenu = styled.nav`
 
    li:hover {
       color: ${success.default}
+   }
+`
+
+export const LogOutBTN = styled.div`
+   padding: 6px 10px;
+   &:hover {
+      color: ${error}
+   }
+`
+export const PopBTN = styled.div`
+   padding: 6px 10px;
+   &:hover {
+      color: ${success.dark}
    }
 `
