@@ -5,7 +5,7 @@ const { genneralAccessToken, genneralRefreshToken } = require("./JwtService");
 // Tạo người dùng mới
 const createUser = (newUser) => {
   return new Promise(async (resolve, reject) => {
-    const {  email, password, confirmPassword } = newUser;
+    const { email, password, confirmPassword } = newUser;
     try {
       // Kiểm tra xem người dùng đã tồn tại chưa
       const checkUser = await User.findOne({
@@ -20,7 +20,6 @@ const createUser = (newUser) => {
       // Mã hóa mật khẩu và tạo người dùng mới
       const hash = bcrypt.hashSync(password, 10);
       const createdUser = await User.create({
-        // name,
         email,
         password: hash,
       });
@@ -32,7 +31,7 @@ const createUser = (newUser) => {
         });
       }
     } catch (e) {
-      reject(e);
+      message: `${e}`;
     }
   });
 };
@@ -62,21 +61,21 @@ const loginUser = (userLogin) => {
         });
       }
       // Tạo access token và refresh token
-      // const access_token = await genneralAccessToken({
-      //   id: checkUser.id,
-      //   isAdmin: checkUser.isAdmin,
-      // });
+      const access_token = await genneralAccessToken({
+        id: checkUser.id,
+        isAdmin: checkUser.isAdmin,
+      });
 
-      // const refresh_token = await genneralRefreshToken({
-      //   id: checkUser.id,
-      //   isAdmin: checkUser.isAdmin,
-      // });
+      const refresh_token = await genneralRefreshToken({
+        id: checkUser.id,
+        isAdmin: checkUser.isAdmin,
+      });
 
       resolve({
         status: "OK",
         message: "SUCCESS",
-        // access_token,
-        // refresh_token,
+        access_token,
+        refresh_token,
       });
     } catch (e) {
       reject(e);
@@ -167,7 +166,8 @@ const getAllUser = () => {
         data: allUser,
       });
     } catch (e) {
-      reject(e);
+      console("Error message: ", e);
+      throw (e)
     }
   });
 };
