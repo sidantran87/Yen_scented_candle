@@ -31,7 +31,7 @@ const createUser = (newUser) => {
         });
       }
     } catch (e) {
-      reject(e);
+      message: `${e}`;
     }
   });
 };
