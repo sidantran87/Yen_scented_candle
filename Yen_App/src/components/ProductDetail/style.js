@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { gray, success } from '../../color'
-import { Input } from "antd";
+import { Input, InputNumber } from "antd";
 export const ProductDetailWrapper = styled.div`
    justify-content: flex-start;
    align-items: center;
@@ -104,17 +104,19 @@ export const QuantityWrapper = styled.div`
    display: inline-flex;
 `
 
-export const QuanityButton = styled.div`
+export const QuantityButton = styled.div`
    background: #F2F2F2;
    width: 30px;
    border-radius: 170px;
    cursor: pointer;
 `
 
-export const QuanityInput = styled(Input)`
+export const QuantityInput = styled(InputNumber)`
    width: 40px;
    font-family: 'Poppins', sans-serif;
    text-align: center;
+   border: none;
+   padding: 0 2.5px;
 `
 
 export const CTAWrapper = styled.div`
