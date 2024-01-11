@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { success } from '../../color'
+import { gray, success } from '../../color'
 import { Input } from "antd";
 export const ProductDetailWrapper = styled.div`
    justify-content: flex-start;
@@ -9,6 +9,7 @@ export const ProductDetailWrapper = styled.div`
 `
 
 export const ProductName = styled.div`
+   margin-right: 6px;   
    color: #1A1A1A;
    font-size: 36px;
    font-family: 'Poppins', sans-serif;
@@ -26,7 +27,7 @@ export const ProductStatus = styled.div`
    align-items: center;
    gap: 10px;
    display: inline-flex;
-   color: ${success.dark};
+   color: ${gray[900]};
 `
 
 export const PriceWrapper = styled.div`
@@ -51,7 +52,7 @@ export const OldPrice = styled.div`
    text-decoration: line-through;
 `
 export const NewPrice = styled.div`
-   color: #2C742F;
+   color: ${success.default};
    font-size: 24px;
    font-family: 'Poppins', sans-serif;
    font-weight: 500;
@@ -130,12 +131,12 @@ export const CTABtn = styled.div`
 `
 
 export const BuyNowBtn = styled.div`
-   width: 300px;
+   width: 250px;
    height: 50px;
 `
 
 export const CartBtn = styled.div`
-   width: 300px;
+   width: 250px;
    height: 50px;
 `
 export const BoldText = styled.div`

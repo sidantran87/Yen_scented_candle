@@ -55,16 +55,16 @@ function Homepage() {
                   {products?.data?.map((product) => {
                      return (
                         <ProductCard style={{}} key={product._id}
-                           countInStock={product.countInStock}
-                           description={product.description}
-                           image={product.image}
-                           name={product.name}
-                           price={product.price}
-                           rating={product.rating}
-                           type={product.type}
-                           selled={product.selled}
-                           discount={product.discount}
-                           id={product._id} />
+                        countInStock={product.countInStock}
+                        description={product.description}
+                        image={product.image}
+                        name={product.name}
+                        price={product.price}
+                        rating={product.rating}
+                        type={product.type}
+                        selled={product.selled}
+                        discount={product.discount}
+                        id={product._id} />
                      )
                   })}
                </CardContainer>

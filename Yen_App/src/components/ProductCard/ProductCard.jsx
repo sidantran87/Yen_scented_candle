@@ -1,16 +1,16 @@
 import React from "react";
 import { ProductHeader, ProductInfo, ProductInfoWrapper, ProductPrice, ProductDiscount, ProductRating, WrapperCard, PriceWrapper, PriceDetail, OldPrice, NewPrice, DiscountTag } from "./style";
-import { warning } from '../../color.js'
+import { warning } from '../../color.js';
 import { useNavigate } from "react-router-dom";
 // const { Meta } = Card;
 
 const ProductCard = (props) => {
    const { countInStock, description, image, name, price, rating, type, discount, selled, id } = props
    const navigate = useNavigate()
-    const handleDetailsProduct = (id) => {
+   const handleDetailsProduct = (id) => {
       navigate(`/product-detail/${id}`)
-    }
-   const newPrice = price * (1 - discount/100);
+   }
+   const newPrice = price * (1 - discount / 100)
 
    return (
       <WrapperCard
@@ -20,7 +20,7 @@ const ProductCard = (props) => {
          cover={<img
             alt="hinh san pham"
             src={image}
-         onClick={() => handleDetailsProduct(id)}
+            onClick={() => handleDetailsProduct(id)}
          />
          }
       >

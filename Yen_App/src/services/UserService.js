@@ -3,12 +3,12 @@ import axios from "axios"
 export const axiosJWT = axios.create()
 
 export const loginUser = async (data) => {
-    const res = await axios.post(`${process.env.REACT_APP_API_URL}/user/sign-in`, data)
+    const res = await axios.post("http://localhost:3888/user/sign-in", data)
     return res.data
 }
 
 export const signupUser = async (data) => {
-    const res = await axios.post(`${process.env.REACT_APP_API_URL}/user/sign-up`, data)
+    const res = await axios.post("http://localhost:3888/user/sign-up", data)
     return res.data
 }
 
