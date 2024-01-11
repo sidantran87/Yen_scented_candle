@@ -3,7 +3,8 @@ import axios from "axios";
 
 
 const axiosInstance = axios.create({
-  baseURL: "http://localhost:3888/api",
+  // baseURL: "http://localhost:3888/api",
+  baseURL: "https://yen-scented-candle-server.onrender.com/api",
   // Replace with your server base URL
 });
 
