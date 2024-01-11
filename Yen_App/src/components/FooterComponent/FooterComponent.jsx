@@ -36,7 +36,6 @@ const FooterComponent = () => {
               <FooterRow>My Account</FooterRow>
               <FooterRow>Order History</FooterRow>
               <FooterRow>Shoping Cart</FooterRow>
-              <FooterRow>Wishlist</FooterRow>
               <FooterRow>Settings</FooterRow>
             </FooterRowContainer>
           </Account>

@@ -69,7 +69,7 @@ export const OldPrice = styled.div`
    text-decoration: line-through;
 `
 export const NewPrice = styled.div`
-   color: #2C742F;
+   color: ${success.default};
    font-size: 16px;
    font-family: 'Poppins', sans-serif;
    font-weight: 500;

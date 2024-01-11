@@ -1,4 +1,5 @@
 import React from "react";
+import { success } from "../../color";
 
 const LineComponent = () => {
   return (
@@ -13,11 +14,11 @@ const LineComponent = () => {
       }}
     >
       <div
-        style={{ width: 12, height: 4, opacity: 0.3, background: "#00B207" }}
+        style={{ width: 12, height: 4, opacity: 0.3, background: success.default }}
       />
-      <div style={{ width: 40, height: 4, background: "#00B207" }} />
+      <div style={{ width: 40, height: 4, background: success.default} } />
       <div
-        style={{ width: 12, height: 4, opacity: 0.3, background: "#00B207" }}
+        style={{ width: 12, height: 4, opacity: 0.3, background: success.default }}
       />
     </div>
   );

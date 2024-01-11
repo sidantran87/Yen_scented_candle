@@ -1,10 +1,10 @@
 import React, { useCallback } from 'react'
 import { AboutContainer, AboutContent, AboutContentWrapper, AboutSpan, AboutTitle, CardContainer, FeatureCard, FeatureContent, FeatureTitle } from './style'
 import SliderComponent from '../../components/SliderComponent/SliderComponent'
-import slider1 from '../../assets/img/slider1.jpg'
-import slider2 from '../../assets/img/slider2.jpg'
-import slider3 from '../../assets/img/slider3.jpg'
-import slider4 from '../../assets/img/slider4.jpg'
+// import slider1 from '../../assets/img/slider1.webp'
+import slider2 from '../../assets/img/slider2.png'
+import slider3 from '../../assets/img/slider3.png'
+import slider4 from '../../assets/img/slider4.png'
 import ProductCard from '../../components/ProductCard/ProductCard'
 import FeartureComponent from '../../components/FeatureComponent/FeartureComponent'
 import ButtonComponent from '../../components/ButtonComponent/ButtonComponent'
@@ -34,7 +34,7 @@ function Homepage() {
          <div id='container' style={{ background: white, padding: '0 60px' }}>
             {/* Slider */}
             <div style={{}}>
-               <SliderComponent style={{ position: 'relative', zIndex: 1, borderRadius: '100px' }} arrImg={[slider1, slider2, slider3, slider4]} />
+               <SliderComponent style={{ position: 'relative', zIndex: 1, borderRadius: '100px' }} arrImg={[slider2, slider3, slider4]} />
                {/* Feature card */}
                <FeatureCard style={{ zIndex: '2' }}>
                   <FeartureComponent svg={shippingIcon} title="Free Shipping" desc="Free shipping on all your order" />
