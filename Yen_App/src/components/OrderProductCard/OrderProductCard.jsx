@@ -1,10 +1,13 @@
    import { Button, Checkbox, Table } from 'antd'
-   import React from 'react'
+   import React, { useState } from 'react'
    import { DividerLine, OrderRowTitle, PaymentBody, PaymentContainer, PaymentDetail1, PaymentDetailContainer1, PaymentHeader, PaymentRow, TotalBody, TotalHeader } from '../AccountComponents/style';
-   import { xIcon } from '../IconComponent/IconComponent';
+   import { minusIcon, plusIcon, xIcon } from '../IconComponent/IconComponent';
    import { gray } from '../../color';
    import { BtnContainer, CartContainer, CartRow } from './style';
    import { useNavigate } from 'react-router-dom';
+import { QuantityButton, QuantityInput, QuantityWrapper } from '../ProductDetail/style';
+import * as ProductService from '../../services/ProductService';
+import { useQuery } from '@tanstack/react-query';
 
    const items = [
    {
@@ -57,7 +60,68 @@
 
 
 
-   const OrderProductCard = () => {
+   const OrderProductCard = (productId) => {
+
+      const fetchDetailsProduct = async ({ queryKey }) => {
+         try {
+             const [, id] = queryKey;
+             const res = await ProductService.getDetailsProduct(id);
+             // console.log('data1: ', res);
+             return res;
+         } catch (error) {
+             console.error('Error fetching product details:', error);
+             throw error;
+         }
+     };
+
+            // fetch ProductDetail data by productId
+      const { data: productDetails } = useQuery({
+         queryKey: ['product-detail', productId],
+         queryFn: fetchDetailsProduct,
+         enabled: !!productId,
+         retry: 1,
+         retryDelay: 1000
+   });
+   // console.log('data2:', productDetails)
+
+   const newPrice = productDetails?.data?.price * (1 - productDetails?.data?.discount / 100)
+   console.log('nPrice', newPrice)
+
+   const [numProduct, setNumProduct] = useState(1);
+   const maxCountInStock = productDetails?.data?.countInStock;
+   const onChange = (value) => {
+         const val = value;
+         // Regular expression to check if the input is a non-negative integer
+         const isPositiveInteger = /^[1-9]\d*$/.test(val);
+
+         if (isPositiveInteger) {
+            setNumProduct(val);
+         } else if (value >= maxCountInStock) {
+            setNumProduct(maxCountInStock);
+         }
+   };
+
+   const onKeyDown = (event) => {
+         // Unaccepted keys list
+         const invalidKeys = ['e', 'E', '+', '-', '.', ','];
+
+         if (invalidKeys.includes(event.key)) {
+            event.preventDefault();
+         }
+   };
+
+   const handleChangeCount = (type, limited) => {
+         if(type === 'increase') {
+            if(!limited) {
+               setNumProduct(numProduct + 1)
+            }
+         }else {
+            if(!limited) {
+               setNumProduct(numProduct - 1)
+            }
+         }
+   }
+  
 
       const navigate = useNavigate();
 
@@ -80,13 +144,23 @@
                   <div>${record.price}</div>
                )}/>
                <Column title={'Quantity'} dataIndex="quantity" key="quantity" render={(text, record) => (
-                  <div>{record.quantity}</div>
+                  <div>
+                        <QuantityWrapper>
+                        <QuantityButton onClick={() => handleChangeCount('decrease',numProduct === 1)}>
+                            {minusIcon}
+                        </QuantityButton>
+                        <QuantityInput type='number' onChange={onChange} onKeyDown={onKeyDown} max={maxCountInStock} min={1} value={numProduct} controls={false} size="small" />
+                        <QuantityButton onClick={() => handleChangeCount('increase',  numProduct === productDetails?.data?.countInStock)}>
+                            {plusIcon}
+                        </QuantityButton>
+                    </QuantityWrapper>
+                  </div>
                )}/>
                <Column title={'Subtotal'} dataIndex="subtotal" key="subtotal" render={(text, record) => (
                   <div>${record.subtotal}</div>
                )}/>
                <Column title={''} dataIndex="subtotal" key="subtotal" render={(text, record) => (
-                  <div style={{width:'26px', color: gray[600]}}>{xIcon}</div>
+                  <div style={{width:'26px', color: gray[600], cursor: 'pointer'}}>{xIcon}</div>
                )}/>
             </Table>
             <BtnContainer>
