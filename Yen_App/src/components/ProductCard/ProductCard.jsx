@@ -11,6 +11,7 @@ const ProductCard = (props) => {
       navigate(`/product-detail/${id}`)
    }
    const newPrice = price * (1 - discount / 100)
+   const roundedPrice = newPrice.toFixed(0)
 
    return (
       <WrapperCard
@@ -34,7 +35,7 @@ const ProductCard = (props) => {
                <PriceWrapper>
                   <PriceDetail>
                      <OldPrice>${price}</OldPrice>
-                     <NewPrice>${newPrice}</NewPrice>
+                     <NewPrice>${roundedPrice}</NewPrice>
                   </PriceDetail>
                   <DiscountTag>-{discount}%</DiscountTag>
                </PriceWrapper>

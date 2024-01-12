@@ -3,6 +3,7 @@ import FormInputComponent from '../../components/FormInputComponent/FormInputCom
 import { Button, Checkbox, Divider, Input, Radio, Space,  } from 'antd'
 import { NormalText, Remember } from '../SignInPage/style'
 import { DividerLine, OrderRowTitle, PaymentBody, PaymentContainer, PaymentDetail1, PaymentDetailContainer1, PaymentHeader, PaymentRow, TotalBody, TotalHeader } from '../../components/AccountComponents/style'
+import product from '../../assets/img/product.webp'
 
 const PaymentPage = () => {
 
@@ -45,7 +46,7 @@ const PaymentPage = () => {
                </div>
                <div style={{display:'flex', justifyContent: 'space-between', alignItems: 'center'}}>
                   <div style={{display: 'flex', gap: '6px', alignItems: 'center'}}>
-                     <img style={{width: '60px', height: '60px', objectFit: 'contain'}} src="https://placewaifu.com/image/200" alt="" />
+                     <img style={{width: '60px', height: '60px', objectFit: 'contain'}} src={product} alt="" />
                      <div>Woodsy Fireside 9oz</div>
                      <div>x5</div>
                   </div>
