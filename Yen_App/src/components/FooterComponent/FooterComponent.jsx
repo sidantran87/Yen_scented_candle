@@ -1,14 +1,14 @@
 import React from 'react'
 import { AboutText, AboutTitle, Account, ButtonEmail, CTAWrapper, Company, Copyright, Download, Footer, FooterContainer, FooterRow, FooterRowContainer, FooterTitleRow, Help, InputEmail, LogoText, LogoTitle, ProxyContainer, Special, SpecialOr, SubcribeWrapper, SubscribeHeader, SubscribeText } from './style'
-import { Button, Input } from 'antd'
-import {gray, success} from '../../color'
+
+import logo from '../../assets/ico/logo.png'
 
 const FooterComponent = () => {
   return (
     <FooterContainer>
         <SubcribeWrapper>
           <LogoTitle>
-              <img src="https://placewaifu.com/image/999" alt="" />
+              <img src={logo} alt="" />
               <LogoText  style={{fontFamily: 'Poppins'}}>Yên Candle</LogoText>
           </LogoTitle>
           <div>
